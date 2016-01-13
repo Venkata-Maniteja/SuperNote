@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FMDatabase.h>
 
 @interface SuperNoteManager : NSObject
+
+@property (nonatomic, strong) FMDatabase *database;
 
 + (SuperNoteManager*)sharedInstance;
 

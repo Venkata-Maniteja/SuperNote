@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910B2F48527D9109A742B430 /* libPods-SuperNote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */; };
 		B819EC111C445583009529DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC101C445583009529DC /* main.m */; };
 		B819EC141C445583009529DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC131C445583009529DC /* AppDelegate.m */; };
 		B819EC171C445583009529DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC161C445583009529DC /* ViewController.m */; };
@@ -14,15 +15,11 @@
 		B819EC1C1C445583009529DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B819EC1B1C445583009529DC /* Assets.xcassets */; };
 		B819EC1F1C445583009529DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B819EC1D1C445583009529DC /* LaunchScreen.storyboard */; };
 		B819EC281C44598B009529DC /* SuperNoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC271C44598B009529DC /* SuperNoteManager.m */; };
-		B82A4A841C46C93F0064337B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B82A4A7A1C46C93F0064337B /* FMDatabase.m */; };
-		B82A4A851C46C93F0064337B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B82A4A7C1C46C93F0064337B /* FMDatabaseAdditions.m */; };
-		B82A4A861C46C93F0064337B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B82A4A7E1C46C93F0064337B /* FMDatabasePool.m */; };
-		B82A4A871C46C93F0064337B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B82A4A801C46C93F0064337B /* FMDatabaseQueue.m */; };
-		B82A4A881C46C93F0064337B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B82A4A831C46C93F0064337B /* FMResultSet.m */; };
-		B82A4A8B1C46C9800064337B /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B82A4A8A1C46C9800064337B /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CFD6E9AB927109497296E26 /* Pods-SuperNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperNote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote.debug.xcconfig"; sourceTree = "<group>"; };
+		4DB22A344901112CC2BC3EFE /* Pods-SuperNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote.release.xcconfig"; sourceTree = "<group>"; };
 		B819EC0C1C445583009529DC /* SuperNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B819EC101C445583009529DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B819EC121C445583009529DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,18 +32,8 @@
 		B819EC201C445583009529DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B819EC261C44598B009529DC /* SuperNoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperNoteManager.h; sourceTree = "<group>"; };
 		B819EC271C44598B009529DC /* SuperNoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperNoteManager.m; sourceTree = "<group>"; };
-		B82A4A791C46C93F0064337B /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		B82A4A7A1C46C93F0064337B /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		B82A4A7B1C46C93F0064337B /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		B82A4A7C1C46C93F0064337B /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		B82A4A7D1C46C93F0064337B /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		B82A4A7E1C46C93F0064337B /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		B82A4A7F1C46C93F0064337B /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		B82A4A801C46C93F0064337B /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		B82A4A811C46C93F0064337B /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		B82A4A821C46C93F0064337B /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		B82A4A831C46C93F0064337B /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		B82A4A8A1C46C9800064337B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperNote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,19 +41,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B82A4A8B1C46C9800064337B /* libsqlite3.0.tbd in Frameworks */,
+				910B2F48527D9109A742B430 /* libPods-SuperNote.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		756A8004C34A43EF91CDF22B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89CCDC3727567D9E52CEDA95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CFD6E9AB927109497296E26 /* Pods-SuperNote.debug.xcconfig */,
+				4DB22A344901112CC2BC3EFE /* Pods-SuperNote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B819EC031C445583009529DC = {
 			isa = PBXGroup;
 			children = (
 				B82A4A8A1C46C9800064337B /* libsqlite3.0.tbd */,
 				B819EC0E1C445583009529DC /* SuperNote */,
 				B819EC0D1C445583009529DC /* Products */,
+				89CCDC3727567D9E52CEDA95 /* Pods */,
+				756A8004C34A43EF91CDF22B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +92,6 @@
 				B819EC151C445583009529DC /* ViewController.h */,
 				B819EC161C445583009529DC /* ViewController.m */,
 				B819EC261C44598B009529DC /* SuperNoteManager.h */,
-				B82A4A891C46C9470064337B /* FMDB */,
 				B819EC271C44598B009529DC /* SuperNoteManager.m */,
 				B819EC181C445583009529DC /* Main.storyboard */,
 				B819EC1B1C445583009529DC /* Assets.xcassets */,
@@ -105,24 +110,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B82A4A891C46C9470064337B /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				B82A4A791C46C93F0064337B /* FMDatabase.h */,
-				B82A4A7A1C46C93F0064337B /* FMDatabase.m */,
-				B82A4A7B1C46C93F0064337B /* FMDatabaseAdditions.h */,
-				B82A4A7C1C46C93F0064337B /* FMDatabaseAdditions.m */,
-				B82A4A7D1C46C93F0064337B /* FMDatabasePool.h */,
-				B82A4A7E1C46C93F0064337B /* FMDatabasePool.m */,
-				B82A4A7F1C46C93F0064337B /* FMDatabaseQueue.h */,
-				B82A4A801C46C93F0064337B /* FMDatabaseQueue.m */,
-				B82A4A811C46C93F0064337B /* FMDB.h */,
-				B82A4A821C46C93F0064337B /* FMResultSet.h */,
-				B82A4A831C46C93F0064337B /* FMResultSet.m */,
-			);
-			name = FMDB;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,9 +117,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B819EC231C445583009529DC /* Build configuration list for PBXNativeTarget "SuperNote" */;
 			buildPhases = (
+				5535BDA8D1254D75C48EE433 /* Check Pods Manifest.lock */,
 				B819EC081C445583009529DC /* Sources */,
 				B819EC091C445583009529DC /* Frameworks */,
 				B819EC0A1C445583009529DC /* Resources */,
+				20F943093DC41B14006DB89A /* Embed Pods Frameworks */,
+				542D97C670B2E1223816E364 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,20 +178,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20F943093DC41B14006DB89A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		542D97C670B2E1223816E364 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5535BDA8D1254D75C48EE433 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B819EC081C445583009529DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B819EC171C445583009529DC /* ViewController.m in Sources */,
-				B82A4A871C46C93F0064337B /* FMDatabaseQueue.m in Sources */,
 				B819EC281C44598B009529DC /* SuperNoteManager.m in Sources */,
 				B819EC141C445583009529DC /* AppDelegate.m in Sources */,
-				B82A4A841C46C93F0064337B /* FMDatabase.m in Sources */,
-				B82A4A861C46C93F0064337B /* FMDatabasePool.m in Sources */,
-				B82A4A881C46C93F0064337B /* FMResultSet.m in Sources */,
 				B819EC111C445583009529DC /* main.m in Sources */,
-				B82A4A851C46C93F0064337B /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +344,7 @@
 		};
 		B819EC241C445583009529DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CFD6E9AB927109497296E26 /* Pods-SuperNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SuperNote/Info.plist;
@@ -322,6 +356,7 @@
 		};
 		B819EC251C445583009529DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB22A344901112CC2BC3EFE /* Pods-SuperNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SuperNote/Info.plist;
