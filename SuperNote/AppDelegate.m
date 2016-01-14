@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "SuperNoteManager.h"
+
 
 @interface AppDelegate ()
+@property (nonatomic, strong) SuperNoteManager *myManager;
+@property (nonatomic,assign) BOOL databaseCreated;
+@property (nonatomic,strong) NSString *databasePath;
 
 @end
 
@@ -17,6 +22,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    _databaseCreated=[[NSUserDefaults standardUserDefaults]boolForKey:@"DatabaseCreated"];
+    _databasePath=[[NSUserDefaults standardUserDefaults]objectForKey:@"DataBasePath"];
+    
+    _myManager=[SuperNoteManager sharedInstance];
+    
+    if(!_databaseCreated){
+            [_myManager createDatabaseAndTable];
+            
+        }else{
+            
+            _myManager.databasePath=_databasePath;
+            _myManager.dataBaseCreated=YES;
+            [_myManager loadDatabase];
+            NSLog(@"Database already exists");
+            NSLog(@"data base path is %@",_myManager.databasePath);
+        }
+
+
     return YES;
 }
 

@@ -11,8 +11,23 @@
 
 @interface SuperNoteManager : NSObject
 
+@property (nonatomic, assign) BOOL  dataBaseCreated;
+//@property (nonatomic, assign) BOOL  dataBaseCreated;
+
+
 @property (nonatomic, strong) FMDatabase *database;
+@property (nonatomic, strong) NSString *databasePath;
+
+@property (nonatomic,strong) NSMutableDictionary *dataDic;
+@property (nonatomic,strong) NSMutableArray *dataArray;
 
 + (SuperNoteManager*)sharedInstance;
 
+-(void)createDatabaseAndTable;
+-(void)queryDatabaseWithQuery:(NSString *) query;
+-(void)clearDatabase;
+-(void)loadDatabase;
+-(BOOL)isDatabaseEmpty;
+-(NSMutableArray *)getDataFromDatabase;
+-(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2;
 @end

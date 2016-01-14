@@ -10,6 +10,8 @@
 
 @interface ContainerViewController : UIViewController
 
+@property (strong, nonatomic) NSString *currentSegueIdentifier;
+
 - (void)swapViewControllers;
 
 @end

@@ -19,6 +19,7 @@
 		B81FD0E51C48052300CB03B8 /* NotesListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0E41C48052300CB03B8 /* NotesListController.m */; };
 		B81FD0E81C4805D500CB03B8 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0E71C4805D500CB03B8 /* ContainerViewController.m */; };
 		B81FD0EE1C4809C200CB03B8 /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */; };
+		B81FD0F11C48157200CB03B8 /* WriteNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0F01C48157200CB03B8 /* WriteNotesController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		B81FD0E71C4805D500CB03B8 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		B81FD0EC1C4809C200CB03B8 /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
 		B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
+		B81FD0EF1C48157200CB03B8 /* WriteNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteNotesController.h; sourceTree = "<group>"; };
+		B81FD0F01C48157200CB03B8 /* WriteNotesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteNotesController.m; sourceTree = "<group>"; };
 		B82A4A8A1C46C9800064337B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperNote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +112,8 @@
 				B81FD0E41C48052300CB03B8 /* NotesListController.m */,
 				B81FD0E01C4804BE00CB03B8 /* EmptyNotesController.h */,
 				B81FD0E11C4804BE00CB03B8 /* EmptyNotesController.m */,
+				B81FD0EF1C48157200CB03B8 /* WriteNotesController.h */,
+				B81FD0F01C48157200CB03B8 /* WriteNotesController.m */,
 				B819EC181C445583009529DC /* Main.storyboard */,
 				B81FD0EC1C4809C200CB03B8 /* EmptySegue.h */,
 				B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */,
@@ -255,6 +260,7 @@
 				B819EC281C44598B009529DC /* SuperNoteManager.m in Sources */,
 				B81FD0E81C4805D500CB03B8 /* ContainerViewController.m in Sources */,
 				B819EC141C445583009529DC /* AppDelegate.m in Sources */,
+				B81FD0F11C48157200CB03B8 /* WriteNotesController.m in Sources */,
 				B81FD0E51C48052300CB03B8 /* NotesListController.m in Sources */,
 				B819EC111C445583009529DC /* main.m in Sources */,
 				B81FD0E21C4804BE00CB03B8 /* EmptyNotesController.m in Sources */,

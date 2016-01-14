@@ -9,16 +9,19 @@
 #import "ContainerViewController.h"
 #import "NotesListController.h"
 #import "EmptyNotesController.h"
+#import "WriteNotesController.h"
 
 #define SegueIdentifierFirst @"embedNotesList"
-#define SegueIdentifierSecond @"embedEmptyNotes"
+#define SegueIdentifierEmptyNotes @"embedEmptyNotes"
+#define SegueIdentifierWrite @"embedWriteNotes"
 
 
 @interface ContainerViewController ()
 
-@property (strong, nonatomic) NSString *currentSegueIdentifier;
 @property (strong, nonatomic) NotesListController *notesListVC;
 @property (strong, nonatomic) EmptyNotesController *emptyNotesVC;
+@property (strong, nonatomic) WriteNotesController *writeNotesVC;
+
 @property (assign, nonatomic) BOOL transitionInProgress;
 
 
@@ -30,10 +33,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     self.transitionInProgress = NO;
-    //load first view controller in our case it is Empty View
-    self.currentSegueIdentifier = SegueIdentifierSecond;
+
+//    self.currentSegueIdentifier = SegueIdentifierEmptyNotes;
     [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];
+
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,8 +75,12 @@
         self.notesListVC = segue.destinationViewController;
     }
     
-    if ([segue.identifier isEqualToString:SegueIdentifierSecond]) {
+    if ([segue.identifier isEqualToString:SegueIdentifierEmptyNotes]) {
         self.emptyNotesVC = segue.destinationViewController;
+    }
+    
+    if ([segue.identifier isEqualToString:SegueIdentifierWrite]) {
+        self.writeNotesVC = segue.destinationViewController;
     }
     
     // If we're going to the first view controller.
@@ -74,7 +101,7 @@
             }
     }
    
-    else if ([segue.identifier isEqualToString:SegueIdentifierSecond]) {
+    else if ([segue.identifier isEqualToString:SegueIdentifierEmptyNotes]) {
         
             if (self.childViewControllers.count>0) {
                 
@@ -91,6 +118,26 @@
                 [segue.destinationViewController didMoveToParentViewController:self];
                 
             }
+        
+    }
+    
+    else if ([segue.identifier isEqualToString:SegueIdentifierWrite]) {
+        
+        if (self.childViewControllers.count>0) {
+            
+            [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:self.writeNotesVC];
+        }else{
+            
+            // If this is the very first time we're loading this we need to do
+            // an initial load and not a swap.
+            [self addChildViewController:segue.destinationViewController];
+            UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+            destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+            [self.view addSubview:destView];
+            [segue.destinationViewController didMoveToParentViewController:self];
+            
+        }
         
     }
 }
@@ -120,17 +167,18 @@
     }
     
     self.transitionInProgress = YES;
-    self.currentSegueIdentifier = ([self.currentSegueIdentifier isEqualToString:SegueIdentifierFirst]) ? SegueIdentifierSecond : SegueIdentifierFirst;
+    self.currentSegueIdentifier = ([self.currentSegueIdentifier isEqualToString:SegueIdentifierFirst]) ? SegueIdentifierEmptyNotes : SegueIdentifierFirst;
     
     if (([self.currentSegueIdentifier isEqualToString:SegueIdentifierFirst]) && self.notesListVC) {
         [self swapFromViewController:self.emptyNotesVC toViewController:self.notesListVC];
         return;
     }
     
-    if (([self.currentSegueIdentifier isEqualToString:SegueIdentifierSecond]) && self.emptyNotesVC) {
+    if (([self.currentSegueIdentifier isEqualToString:SegueIdentifierEmptyNotes]) && self.emptyNotesVC) {
         [self swapFromViewController:self.notesListVC toViewController:self.emptyNotesVC];
         return;
     }
+    
     
     [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];
 }

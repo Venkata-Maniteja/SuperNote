@@ -7,6 +7,7 @@
 //
 
 #import "SuperNoteManager.h"
+#import <FMDatabaseAdditions.h>
 
 @implementation SuperNoteManager
 
@@ -23,42 +24,116 @@
 }
 
 
--(void)createDatabaseAndTable{
+-(void)loadDatabase{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsPath = [paths objectAtIndex:0];
-    NSString *path = [docsPath stringByAppendingPathComponent:@"SuperNoteDB.sqlite"];
+    _databasePath = [docsPath stringByAppendingPathComponent:@"SuperNoteDB.sqlite"];
+    _database = [FMDatabase databaseWithPath:_databasePath];
     
-    _database = [FMDatabase databaseWithPath:path];
-    
-    [_database open];
-    [_database executeUpdate:@"create table user(name text primary key, age int)"];
+}
 
+
+-(void)createDatabaseAndTable{
+    
+    
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docsPath = [paths objectAtIndex:0];
+        _databasePath = [docsPath stringByAppendingPathComponent:@"SuperNoteDB.sqlite"];
+        
+        _database = [FMDatabase databaseWithPath:_databasePath];
+        
+        [_database open];
+        [_database executeUpdate:@"create table testNotes(notes text primary key, dTime text)"];
+        
+        _dataBaseCreated=YES;
+        
+        NSLog(@"Database created");
+        NSLog(@"data base path is %@",_databasePath);
+    
+    
+    [[NSUserDefaults standardUserDefaults]setObject:_databasePath forKey:@"DataBasePath"];
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"DatabaseCreated"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+        
+    
+    
+    
 }
 
 
 -(void)queryDatabaseWithQuery:(NSString *) query{
     
-    FMResultSet *results = [_database executeQuery:@"select * from user"];
+    FMResultSet *results = [_database executeQuery:query];
     while([results next]) {
-        NSString *name = [results stringForColumn:@"name"];
-        NSInteger age  = [results intForColumn:@"age"];
-        NSLog(@"User: %@ - %d",name, age);
+        NSString *notes = [results stringForColumn:@"notes"];
+        NSString *dateTime  = [results stringForColumn:@"dTime"];
+        NSLog(@"User: %@ - %@",notes, dateTime);
     }
     [_database close];
 }
 
-+(void)clearDatabase{
+
+-(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2{
+    
+    [_database open];
+    [_database executeUpdate:@"insert into testNotes (notes,dTime) values (?,?)",value1,value2];
+    [_database close];
+}
+
+-(void)clearDatabase{
+    
+    [_database open];
+    [_database executeUpdate:@"delete from testNotes"];
+    [_database close];
+    
+    
+}
+
+-(BOOL)isDatabaseEmpty{
+    
+    [_database open];
+    
+    if ([_database intForQuery:@"SELECT COUNT(notes) FROM testNotes"]==0){
+        
+        [_database close];
+        return YES;
+    }
+    
+    [_database close];
+    return NO;
     
 }
 
 
 
-+(NSArray *)getDataFromDatabase{
+-(NSMutableArray *)getDataFromDatabase{
     
-    NSArray *temp;
     
-    return temp;
+     [_dataDic removeAllObjects];
+     [_dataArray removeAllObjects];
+    
+    _dataDic=[[NSMutableDictionary alloc]init];
+    _dataArray=[[NSMutableArray alloc]init];
+   
+    [_database open];
+    
+    FMResultSet *results = [_database executeQuery:@"select * from testNotes"];
+    while([results next]) {
+        NSString *notes = [results stringForColumn:@"notes"];
+        NSString *dateTime  = [results stringForColumn:@"dTime"];
+        NSLog(@"User: %@ - %@",notes, dateTime);
+        [_dataDic setObject:notes forKey:@"Notes"];
+        [_dataDic setObject:dateTime forKey:@"DateTime"];
+        
+        [_dataArray addObject:_dataDic];
+    }
+    [_database close];
+    
+    
+    
+    return _dataArray;
 }
 
 @end

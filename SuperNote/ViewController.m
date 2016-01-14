@@ -8,10 +8,14 @@
 
 #import "ViewController.h"
 #import "ContainerViewController.h"
+#import "SuperNoteManager.h"
 @interface ViewController ()
 
-@property (nonatomic, weak) ContainerViewController *containerViewController;
 
+@property (nonatomic, weak)     IBOutlet UIBarButtonItem                       *   addNotes;
+@property (nonatomic, weak)     IBOutlet UIBarButtonItem                       *   settings;
+@property (nonatomic, weak)              ContainerViewController               *   containerViewController;
+@property (nonatomic, strong)            SuperNoteManager                      *   myManager;
 
 @end
 
@@ -20,17 +24,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    _myManager=[SuperNoteManager sharedInstance];
+    
+   
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    //check data
+    //load first view controller in our case it is Empty View
+    
+    //TODO: check data from database and load the VC based on it
+    
+    if ([_myManager isDatabaseEmpty]) {
+        
+        _containerViewController.currentSegueIdentifier=@"embedEmptyNotes";
+        
+    }else{
+        
+        _containerViewController.currentSegueIdentifier=@"embedNotesList";
+    }
+    //[self.containerViewController swapViewControllers];
+
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(IBAction)presentAddNotes:(id)sender{
     
-//    [self.containerViewController swapViewControllers];
+//
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -49,7 +91,7 @@
     }
 }
 
-- (IBAction)swapButtonPressed:(id)sender
+- (IBAction)presetnSettins:(id)sender
 {
     
 }
