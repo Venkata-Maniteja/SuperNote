@@ -31,6 +31,11 @@
     _databasePath = [docsPath stringByAppendingPathComponent:@"SuperNoteDB.sqlite"];
     _database = [FMDatabase databaseWithPath:_databasePath];
     
+    
+    _dataDic=[[NSMutableDictionary alloc]init];
+    _dataArray=[[NSMutableArray alloc]init];
+    
+    
 }
 
 
@@ -50,6 +55,13 @@
         
         NSLog(@"Database created");
         NSLog(@"data base path is %@",_databasePath);
+    
+    [_dataDic removeAllObjects];
+    [_dataArray removeAllObjects];
+    
+    _dataDic=[[NSMutableDictionary alloc]init];
+    _dataArray=[[NSMutableArray alloc]init];
+    
     
     
     [[NSUserDefaults standardUserDefaults]setObject:_databasePath forKey:@"DataBasePath"];
@@ -84,6 +96,10 @@
 
 -(void)clearDatabase{
     
+    [_dataDic removeAllObjects];
+    [_dataArray removeAllObjects];
+    
+    
     [_database open];
     [_database executeUpdate:@"delete from testNotes"];
     [_database close];
@@ -110,13 +126,9 @@
 
 -(NSMutableArray *)getDataFromDatabase{
     
+    [_dataArray removeAllObjects];
+    [_dataDic removeAllObjects];
     
-     [_dataDic removeAllObjects];
-     [_dataArray removeAllObjects];
-    
-    _dataDic=[[NSMutableDictionary alloc]init];
-    _dataArray=[[NSMutableArray alloc]init];
-   
     [_database open];
     
     FMResultSet *results = [_database executeQuery:@"select * from testNotes"];
@@ -124,6 +136,7 @@
         NSString *notes = [results stringForColumn:@"notes"];
         NSString *dateTime  = [results stringForColumn:@"dTime"];
         NSLog(@"User: %@ - %@",notes, dateTime);
+        _dataDic=[[NSMutableDictionary alloc]init];
         [_dataDic setObject:notes forKey:@"Notes"];
         [_dataDic setObject:dateTime forKey:@"DateTime"];
         
