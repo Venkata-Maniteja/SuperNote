@@ -28,6 +28,7 @@
     _myManager=[SuperNoteManager sharedInstance];
     _dataArray=[[NSMutableArray alloc]init];
     
+    //[_tableView setEditing:YES]; //shows red buttons to delete rows
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -89,6 +90,15 @@
     
     return cell;
     
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return YES;
 }
 
 /*
