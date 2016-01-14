@@ -15,6 +15,10 @@
 		B819EC1C1C445583009529DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B819EC1B1C445583009529DC /* Assets.xcassets */; };
 		B819EC1F1C445583009529DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B819EC1D1C445583009529DC /* LaunchScreen.storyboard */; };
 		B819EC281C44598B009529DC /* SuperNoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC271C44598B009529DC /* SuperNoteManager.m */; };
+		B81FD0E21C4804BE00CB03B8 /* EmptyNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0E11C4804BE00CB03B8 /* EmptyNotesController.m */; };
+		B81FD0E51C48052300CB03B8 /* NotesListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0E41C48052300CB03B8 /* NotesListController.m */; };
+		B81FD0E81C4805D500CB03B8 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0E71C4805D500CB03B8 /* ContainerViewController.m */; };
+		B81FD0EE1C4809C200CB03B8 /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,14 @@
 		B819EC201C445583009529DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B819EC261C44598B009529DC /* SuperNoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperNoteManager.h; sourceTree = "<group>"; };
 		B819EC271C44598B009529DC /* SuperNoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperNoteManager.m; sourceTree = "<group>"; };
+		B81FD0E01C4804BE00CB03B8 /* EmptyNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyNotesController.h; sourceTree = "<group>"; };
+		B81FD0E11C4804BE00CB03B8 /* EmptyNotesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyNotesController.m; sourceTree = "<group>"; };
+		B81FD0E31C48052300CB03B8 /* NotesListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesListController.h; sourceTree = "<group>"; };
+		B81FD0E41C48052300CB03B8 /* NotesListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesListController.m; sourceTree = "<group>"; };
+		B81FD0E61C4805D500CB03B8 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		B81FD0E71C4805D500CB03B8 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		B81FD0EC1C4809C200CB03B8 /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
+		B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
 		B82A4A8A1C46C9800064337B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperNote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -93,7 +105,15 @@
 				B819EC161C445583009529DC /* ViewController.m */,
 				B819EC261C44598B009529DC /* SuperNoteManager.h */,
 				B819EC271C44598B009529DC /* SuperNoteManager.m */,
+				B81FD0E31C48052300CB03B8 /* NotesListController.h */,
+				B81FD0E41C48052300CB03B8 /* NotesListController.m */,
+				B81FD0E01C4804BE00CB03B8 /* EmptyNotesController.h */,
+				B81FD0E11C4804BE00CB03B8 /* EmptyNotesController.m */,
 				B819EC181C445583009529DC /* Main.storyboard */,
+				B81FD0EC1C4809C200CB03B8 /* EmptySegue.h */,
+				B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */,
+				B81FD0E61C4805D500CB03B8 /* ContainerViewController.h */,
+				B81FD0E71C4805D500CB03B8 /* ContainerViewController.m */,
 				B819EC1B1C445583009529DC /* Assets.xcassets */,
 				B819EC1D1C445583009529DC /* LaunchScreen.storyboard */,
 				B819EC201C445583009529DC /* Info.plist */,
@@ -233,8 +253,12 @@
 			files = (
 				B819EC171C445583009529DC /* ViewController.m in Sources */,
 				B819EC281C44598B009529DC /* SuperNoteManager.m in Sources */,
+				B81FD0E81C4805D500CB03B8 /* ContainerViewController.m in Sources */,
 				B819EC141C445583009529DC /* AppDelegate.m in Sources */,
+				B81FD0E51C48052300CB03B8 /* NotesListController.m in Sources */,
 				B819EC111C445583009529DC /* main.m in Sources */,
+				B81FD0E21C4804BE00CB03B8 /* EmptyNotesController.m in Sources */,
+				B81FD0EE1C4809C200CB03B8 /* EmptySegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

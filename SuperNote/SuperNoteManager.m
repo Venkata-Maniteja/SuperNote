@@ -17,7 +17,7 @@
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[SuperNoteManager alloc] init];
         
-        [self createDatabase];
+//        [self createDatabase];
     });
     return _sharedInstance;
 }
