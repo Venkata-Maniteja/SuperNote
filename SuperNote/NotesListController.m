@@ -90,14 +90,8 @@
     
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self performSegueWithIdentifier:@"showDetailNotes" sender:_tableView];
-}
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     
     [_myManager deleteRowFromDatabaseWithRowID:[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"NotesID"] intValue]];
     [_dataArray removeObjectAtIndex:indexPath.row];
