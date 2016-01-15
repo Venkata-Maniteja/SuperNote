@@ -9,7 +9,7 @@
 
 #import "NotesListController.h"
 #import "SuperNoteManager.h"
-
+#import "WriteNotesController.h"
 @interface NotesListController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -90,6 +90,11 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self performSegueWithIdentifier:@"showDetailNotes" sender:_tableView];
+}
+
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
@@ -105,14 +110,23 @@
     return YES;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"showDetailNotes"]) {
+        
+        NSIndexPath *indexPath=[_tableView indexPathForSelectedRow];
+        WriteNotesController *wVc=segue.destinationViewController;
+        wVc.notesStatus=@"UpdateNotes";
+        wVc.notesID=[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"NotesID"] intValue];
+    }
+    
 }
-*/
+
 
 @end

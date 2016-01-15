@@ -112,6 +112,29 @@
     [_database close];
 }
 
+
+-(void)updateRecordWithRowID:(int)value withText:(NSString *)string withDate:(NSString *)value2{
+    
+    if ([_database open] != YES) {
+        NSLog(@"DB Error %d: %@", [_database lastErrorCode], [_database lastErrorMessage]);
+    }
+    
+    [_database beginTransaction];
+    BOOL success =[_database executeUpdate:@"update testNotes set notes=?,dTime=? where notesid=?",string,value2,[NSNumber numberWithInt:value]];
+    
+    
+    if (success) {
+        NSLog(@"OK");
+        [_database commit];
+        [_database close];
+    }else {
+        NSLog(@"FAIL");
+         [_database close];
+    }
+
+    
+}
+
 -(void)clearDatabase{
     
     [_dataDic removeAllObjects];

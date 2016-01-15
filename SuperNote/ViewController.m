@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ContainerViewController.h"
 #import "SuperNoteManager.h"
+#import "WriteNotesController.h"
 @interface ViewController ()
 
 
@@ -33,6 +34,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     
     //check data
     //load first view controller in our case it is Empty View
@@ -72,7 +74,7 @@
 
 -(IBAction)presentAddNotes:(id)sender{
     
-//
+    [self performSegueWithIdentifier:@"pushAddNotes" sender:sender];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -89,6 +91,14 @@
     if ([segue.identifier isEqualToString:@"embedContainer"]) {
         self.containerViewController = segue.destinationViewController;
     }
+    
+    if ([segue.identifier isEqualToString:@"pushAddNotes"]) {
+        
+        WriteNotesController *wVC=segue.destinationViewController;
+        wVC.notesStatus=@"NewNotes";
+        
+    }
+    
 }
 
 - (IBAction)presetnSettins:(id)sender

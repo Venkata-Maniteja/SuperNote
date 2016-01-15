@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface  NSString(DateFormatter)
-+(NSString *)formatDateString:(NSDate *)date;
++ (NSString *)formatDateString:(NSDate *)date;
 + (NSString *)daySuffixForDate:(NSDate *)date;
 @end

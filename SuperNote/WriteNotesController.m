@@ -48,8 +48,18 @@
     
     if (self.isMovingFromParentViewController) {
         NSLog(@"going back");
+        if (![_textView.text isEqualToString:@""]) {
+            
+            if ([_notesStatus isEqualToString:@"NewNotes"]) {
+                
+                [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+            
+            }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
+               
+                [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+            }
         
-        [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+        }
     }
 }
 

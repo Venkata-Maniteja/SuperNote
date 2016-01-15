@@ -10,4 +10,7 @@
 
 @interface WriteNotesController : UIViewController
 
+@property (nonatomic, strong) NSString *notesStatus;
+@property (nonatomic,assign) int notesID;
+
 @end
