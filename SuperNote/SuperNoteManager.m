@@ -17,8 +17,6 @@
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[SuperNoteManager alloc] init];
-        
-//        [self createDatabase];
     });
     return _sharedInstance;
 }
@@ -38,9 +36,29 @@
     
 }
 
+- (void)removeFile:(NSString *)fileName
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:fileName];
+    NSError *error;
+    BOOL success = [fileManager removeItemAtPath:filePath error:&error];
+    if (success) {
+        
+        NSLog(@"FIle Deleted");
+    }
+    else
+    {
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
+}
+
 
 -(void)createDatabaseAndTable{
     
+    
+       [self removeFile:@"SuperNoteDB.sqlite"];
     
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *docsPath = [paths objectAtIndex:0];
@@ -49,7 +67,7 @@
         _database = [FMDatabase databaseWithPath:_databasePath];
         
         [_database open];
-        [_database executeUpdate:@"create table testNotes(notes text primary key, dTime text)"];
+        [_database executeUpdate:@"create table testNotes(notesid integer primary key autoincrement, notes text , dTime text)"];
         
         _dataBaseCreated=YES;
         
@@ -107,6 +125,15 @@
     
 }
 
+-(void)deleteRowFromDatabaseWithRowID:(int)value{
+    
+    [_database open];
+    [_database executeUpdate:[NSString stringWithFormat:@"delete from testNotes where notesid=%d",value]];
+    [_database close];
+    
+    
+}
+
 -(BOOL)isDatabaseEmpty{
     
     [_database open];
@@ -135,10 +162,14 @@
     while([results next]) {
         NSString *notes = [results stringForColumn:@"notes"];
         NSString *dateTime  = [results stringForColumn:@"dTime"];
+        int notesID=[results intForColumn:@"notesid"];
         NSLog(@"User: %@ - %@",notes, dateTime);
         _dataDic=[[NSMutableDictionary alloc]init];
+        [_dataDic setObject:[NSNumber numberWithInt:notesID] forKey:@"NotesID"];
         [_dataDic setObject:notes forKey:@"Notes"];
         [_dataDic setObject:dateTime forKey:@"DateTime"];
+        
+        
         
         [_dataArray addObject:_dataDic];
     }

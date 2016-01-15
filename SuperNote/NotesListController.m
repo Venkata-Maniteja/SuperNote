@@ -75,9 +75,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
-    static NSString *unifiedID = @"CELLID";
+   static NSString *unifiedID = @"CELLID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:unifiedID];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:unifiedID];
@@ -93,6 +91,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    [_myManager deleteRowFromDatabaseWithRowID:[[[_dataArray objectAtIndex:indexPath.row] objectForKey:@"NotesID"] intValue]];
+    [_dataArray removeObjectAtIndex:indexPath.row];
+    [_tableView reloadData];
     
 }
 

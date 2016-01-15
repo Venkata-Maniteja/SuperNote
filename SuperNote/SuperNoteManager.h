@@ -28,6 +28,7 @@
 -(void)clearDatabase;
 -(void)loadDatabase;
 -(BOOL)isDatabaseEmpty;
+-(void)deleteRowFromDatabaseWithRowID:(int)value;
 -(NSMutableArray *)getDataFromDatabase;
 -(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2;
 @end
