@@ -7,25 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EF8E9AA652DBE2745A7D5C8CD2E3BDE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 400AFB42920EB39709666D3F1A73D6C2 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0F8A8E0D6FAEBF758E0B4D620335F094 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF3AEDDA16DD8E28B59FF0788FDDC03 /* FMDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		282081E035E7A843068E8BCC2E07C217 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C11A8F38580C7A7FF38ACB6A3B412884 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		313531CEDA0294311D87B4F4C3F073F4 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 91893D40185E0EFA40FC217BE44A7C0D /* FMDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38C2044CC9EFBED57C5D3B99A60287DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		3D0F69C4CA35EB6A1F686BA88B19B4F6 /* FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D76813CB39ACC402A9EE3DC12B4E682 /* FMDB-dummy.m */; };
+		0EF8E9AA652DBE2745A7D5C8CD2E3BDE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 474AD94373D557439918B9E409E5DD0D /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0F8A8E0D6FAEBF758E0B4D620335F094 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 143C59133BBDBBCC82DC774500E800D7 /* FMDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		218CFE4D4B523EB80965B8A748FFFB46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		282081E035E7A843068E8BCC2E07C217 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B630D7129E95B2EC12B140DAC438AD04 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		313531CEDA0294311D87B4F4C3F073F4 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = A153E762317CEA576CA0D32A4CFEFB4D /* FMDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C68444946546EBF05C90D14FA2BEC87 /* SWUtilityButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B597D7E8F42F8F794F5A0DD99B2146 /* SWUtilityButtonView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D0F69C4CA35EB6A1F686BA88B19B4F6 /* FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81026C1DDF7B5EC12CD2FD3E41D67F22 /* FMDB-dummy.m */; };
+		3F4D74477EC6F7A263C3C220E6479893 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		587B76A3E381AF7C3EFFDF6754D39288 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		A350C5704A1F233DAD830E081E00F8C1 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC0EED53ED8D7C1931178E0E4269B4 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B418C9BDCF8C6BAC2E3942F157BB6D4C /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D2DD52CB174E1DC79111C38E770F6FC8 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA027706DD6805766F1F4EC548E72440 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7C30F9E55829B027C4913D1F19D68C /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D0C5FF5485EAA2CDA03E9796B407697A /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 33F15B71183AD666DFC49D907F769ACF /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D0D5FFE53407F16C9CD3D0ECF43ACE93 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 638E465E4B27490B0FB423614C3ADD11 /* FMDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEFA3504695E9DFDE1177DAB22884470 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B69D4A7150AC2F65A57B7D04F092D4 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EE7214A199805B39ACE54EA84E3D4F9C /* Pods-SuperNote-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9883EBC567C2DB5F781D113E38EEB4 /* Pods-SuperNote-dummy.m */; };
-		F977B243321331B58666E9284634101A /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 69CC8B63F837EA7B053AB8BA07253A25 /* FMResultSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B7A11D97247CDC08DDF09236AD09FFD /* SWUtilityButtonTapGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = A3675D9E0905E055149E51A11BF3B673 /* SWUtilityButtonTapGestureRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BB89ADDFF13A4BD20CF08099EF9D8D6 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C2CE8F11EC19780FA4E29581A62E81 /* SWLongPressGestureRecognizer.m */; };
+		7D8213319B490957901726E23DC9E987 /* Pods-SuperNote-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9883EBC567C2DB5F781D113E38EEB4 /* Pods-SuperNote-dummy.m */; };
+		896FA2681814B5CF2D8EA38920A7C942 /* NSMutableArray+SWUtilityButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DBC5F147E0412E91D8D48F147C9C4B9 /* NSMutableArray+SWUtilityButtons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91F53A0228DEDE7916B003636697072E /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9EBB51FD38A4CC37B749E952C40A83 /* SWCellScrollView.m */; };
+		95ACD26334AB3EC2869024B9031FCE4F /* SWCellScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = C14CE977AD14BA5BC63AC5BCF378758C /* SWCellScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2904FB3D3791E7CFCA6791C4D9D9ECE /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DDDEB0F3F5CC7A0BD81229812ECF96 /* SWTableViewCell.m */; };
+		A350C5704A1F233DAD830E081E00F8C1 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 045153ED69BDE54F02E69C4DA7F754D6 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A5455C5AA1277B6F0BC92A023C0BAC54 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 362EF279875DB1B471A9F77E2390324F /* SWUtilityButtonTapGestureRecognizer.m */; };
+		A9F348106375D9B33425EC2EB0EBCC75 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A9B72CC0D7385193B3054519A5642 /* NSMutableArray+SWUtilityButtons.m */; };
+		B418C9BDCF8C6BAC2E3942F157BB6D4C /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C01FA91FA9516C48B3E5E6099EF9208 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA027706DD6805766F1F4EC548E72440 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F6158063F56BC5873F05727349A12629 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CE3EB3B08F6C59160510CDA1E9FBB42F /* SWTableViewCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BBFDB0770577BD59B50101E49D6D91 /* SWTableViewCell-dummy.m */; };
+		D0C5FF5485EAA2CDA03E9796B407697A /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = C727D0B5C7C1FD73AE6BD9EFBDAA9C53 /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0D5FFE53407F16C9CD3D0ECF43ACE93 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 938B209EE432154FD674D33FAF972540 /* FMDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DEFA3504695E9DFDE1177DAB22884470 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 98559C55AEE6F398A8D890E40800353B /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E1CE06DAC7AFA6692240FBA1D9388A3E /* SWTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 128F86997CD041EA1D212E70223F7F2B /* SWTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7E92DF1042F7F6A48062C8024E77A07 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCA920A864C0FD1C230E15C26F5DEDE /* SWUtilityButtonView.m */; };
+		EF6A2D7A3D7F71BB51575882E9DF55B4 /* SWLongPressGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F53FF0FCA16B4F8FA00E14C0BD601F9 /* SWLongPressGestureRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F977B243321331B58666E9284634101A /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 88955B1537A6DE76A69020985E65C083 /* FMResultSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		099FF7DDAFD199361EC173CE5BCCFB45 /* PBXContainerItemProxy */ = {
+		19A9F1CFD9C948729D4C381544F80117 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 251D9A6BBA65937F79D90F35B252091B;
+			remoteInfo = SWTableViewCell;
+		};
+		4D80399EE3BE6F625BF9FA56FF181992 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -35,39 +56,55 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		045153ED69BDE54F02E69C4DA7F754D6 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		04BBFDB0770577BD59B50101E49D6D91 /* SWTableViewCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SWTableViewCell-dummy.m"; sourceTree = "<group>"; };
 		0E0188A138D618E62FCED718F752F612 /* Pods-SuperNote-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SuperNote-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1AF3AEDDA16DD8E28B59FF0788FDDC03 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		128F86997CD041EA1D212E70223F7F2B /* SWTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWTableViewCell.h; path = SWTableViewCell/PodFiles/SWTableViewCell.h; sourceTree = "<group>"; };
+		143C59133BBDBBCC82DC774500E800D7 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		16983649511363FB36E92CA2D0DFBEB5 /* libSWTableViewCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSWTableViewCell.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		244EB4DD0419B5205D29DB478FA41083 /* Pods-SuperNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SuperNote.debug.xcconfig"; sourceTree = "<group>"; };
-		33F15B71183AD666DFC49D907F769ACF /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
-		3BCC0EED53ED8D7C1931178E0E4269B4 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		29B597D7E8F42F8F794F5A0DD99B2146 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonView.h; path = SWTableViewCell/PodFiles/SWUtilityButtonView.h; sourceTree = "<group>"; };
+		2C01FA91FA9516C48B3E5E6099EF9208 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		2D4B83358DAF1B1CD78C58E983D3C1FB /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		35DDDEB0F3F5CC7A0BD81229812ECF96 /* SWTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWTableViewCell.m; path = SWTableViewCell/PodFiles/SWTableViewCell.m; sourceTree = "<group>"; };
+		362EF279875DB1B471A9F77E2390324F /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonTapGestureRecognizer.m; path = SWTableViewCell/PodFiles/SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		400AFB42920EB39709666D3F1A73D6C2 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
-		4ED23060EA19A9310D96807DD283756B /* libPods-SuperNote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperNote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		638E465E4B27490B0FB423614C3ADD11 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
-		69CC8B63F837EA7B053AB8BA07253A25 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
-		6D76813CB39ACC402A9EE3DC12B4E682 /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
-		71B69D4A7150AC2F65A57B7D04F092D4 /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		474AD94373D557439918B9E409E5DD0D /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		4C64A575FB1EF46C43747AC415462EAA /* FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMDB-prefix.pch"; sourceTree = "<group>"; };
+		55C2CE8F11EC19780FA4E29581A62E81 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWLongPressGestureRecognizer.m; path = SWTableViewCell/PodFiles/SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		6275603496AC06167B450C297D1C50EB /* FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FMDB.xcconfig; sourceTree = "<group>"; };
+		7E7A9B72CC0D7385193B3054519A5642 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SWUtilityButtons.m"; path = "SWTableViewCell/PodFiles/NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		7F53FF0FCA16B4F8FA00E14C0BD601F9 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWLongPressGestureRecognizer.h; path = SWTableViewCell/PodFiles/SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		81026C1DDF7B5EC12CD2FD3E41D67F22 /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
 		82130F356A39CC73A713F541A6228F7E /* Pods-SuperNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SuperNote.release.xcconfig"; sourceTree = "<group>"; };
-		91893D40185E0EFA40FC217BE44A7C0D /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
-		A1448204AE8E2DC37C8C36438BED7AD8 /* FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMDB-prefix.pch"; sourceTree = "<group>"; };
-		A387FB6FD6231D01E1A6EB93FD2CB8B9 /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2AC8D08AB9E95E701EC049C53414AEB /* FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FMDB.xcconfig; sourceTree = "<group>"; };
+		88955B1537A6DE76A69020985E65C083 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		8A9EBB51FD38A4CC37B749E952C40A83 /* SWCellScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWCellScrollView.m; path = SWTableViewCell/PodFiles/SWCellScrollView.m; sourceTree = "<group>"; };
+		8DBC5F147E0412E91D8D48F147C9C4B9 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SWUtilityButtons.h"; path = "SWTableViewCell/PodFiles/NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		938B209EE432154FD674D33FAF972540 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		98559C55AEE6F398A8D890E40800353B /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		A153E762317CEA576CA0D32A4CFEFB4D /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
+		A317CFD1B9B9D23DC9BF497A8DF27992 /* SWTableViewCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SWTableViewCell.xcconfig; sourceTree = "<group>"; };
+		A3675D9E0905E055149E51A11BF3B673 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonTapGestureRecognizer.h; path = SWTableViewCell/PodFiles/SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		B597A753A3F5B64AAA14D03A259BE109 /* SWTableViewCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWTableViewCell-prefix.pch"; sourceTree = "<group>"; };
+		B630D7129E95B2EC12B140DAC438AD04 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BB9883EBC567C2DB5F781D113E38EEB4 /* Pods-SuperNote-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SuperNote-dummy.m"; sourceTree = "<group>"; };
 		BE29E465D8BB7F8836E67CCDB35DF054 /* Pods-SuperNote-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SuperNote-acknowledgements.plist"; sourceTree = "<group>"; };
-		C11A8F38580C7A7FF38ACB6A3B412884 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
-		D2DD52CB174E1DC79111C38E770F6FC8 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		C14CE977AD14BA5BC63AC5BCF378758C /* SWCellScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWCellScrollView.h; path = SWTableViewCell/PodFiles/SWCellScrollView.h; sourceTree = "<group>"; };
+		C270749496D81AB5BCD3602D9F7A7947 /* libPods-SuperNote.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperNote.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C727D0B5C7C1FD73AE6BD9EFBDAA9C53 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
 		D6BEDFBD6D0B1F21CCE2C4C64BF8487F /* Pods-SuperNote-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SuperNote-resources.sh"; sourceTree = "<group>"; };
 		DBF0988F7D2D61383CA20D18C051C489 /* Pods-SuperNote-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SuperNote-frameworks.sh"; sourceTree = "<group>"; };
-		DC7C30F9E55829B027C4913D1F19D68C /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		F6158063F56BC5873F05727349A12629 /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		FDCA920A864C0FD1C230E15C26F5DEDE /* SWUtilityButtonView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonView.m; path = SWTableViewCell/PodFiles/SWUtilityButtonView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		004DFB2CD64A8E2176C297D24F937B3B /* Frameworks */ = {
+		6E73C3C39DB8F76BE89C1BC0DB157150 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38C2044CC9EFBED57C5D3B99A60287DA /* Foundation.framework in Frameworks */,
+				218CFE4D4B523EB80965B8A748FFFB46 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +113,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				587B76A3E381AF7C3EFFDF6754D39288 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1BBBEAC8D98077697965D9FBE27062D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4D74477EC6F7A263C3C220E6479893 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,24 +150,53 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		12C98BAA7D04E242DC1C8724A17BAF90 /* Products */ = {
+		410F5D030819517D3D69A7BEE224AEFB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A387FB6FD6231D01E1A6EB93FD2CB8B9 /* libFMDB.a */,
-				4ED23060EA19A9310D96807DD283756B /* libPods-SuperNote.a */,
+				A317CFD1B9B9D23DC9BF497A8DF27992 /* SWTableViewCell.xcconfig */,
+				04BBFDB0770577BD59B50101E49D6D91 /* SWTableViewCell-dummy.m */,
+				B597A753A3F5B64AAA14D03A259BE109 /* SWTableViewCell-prefix.pch */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SWTableViewCell";
 			sourceTree = "<group>";
 		};
-		6A65CEB166911CC900621A37BC272B1F /* Support Files */ = {
+		44C0AC552B82C7A4C92AD8183222789F /* standard */ = {
 			isa = PBXGroup;
 			children = (
-				B2AC8D08AB9E95E701EC049C53414AEB /* FMDB.xcconfig */,
-				6D76813CB39ACC402A9EE3DC12B4E682 /* FMDB-dummy.m */,
-				A1448204AE8E2DC37C8C36438BED7AD8 /* FMDB-prefix.pch */,
+				938B209EE432154FD674D33FAF972540 /* FMDatabase.h */,
+				F6158063F56BC5873F05727349A12629 /* FMDatabase.m */,
+				2C01FA91FA9516C48B3E5E6099EF9208 /* FMDatabaseAdditions.h */,
+				045153ED69BDE54F02E69C4DA7F754D6 /* FMDatabaseAdditions.m */,
+				143C59133BBDBBCC82DC774500E800D7 /* FMDatabasePool.h */,
+				474AD94373D557439918B9E409E5DD0D /* FMDatabasePool.m */,
+				C727D0B5C7C1FD73AE6BD9EFBDAA9C53 /* FMDatabaseQueue.h */,
+				B630D7129E95B2EC12B140DAC438AD04 /* FMDatabaseQueue.m */,
+				A153E762317CEA576CA0D32A4CFEFB4D /* FMDB.h */,
+				88955B1537A6DE76A69020985E65C083 /* FMResultSet.h */,
+				98559C55AEE6F398A8D890E40800353B /* FMResultSet.m */,
+			);
+			name = standard;
+			sourceTree = "<group>";
+		};
+		51029F8DB21F6256F482D48380BB9191 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6275603496AC06167B450C297D1C50EB /* FMDB.xcconfig */,
+				81026C1DDF7B5EC12CD2FD3E41D67F22 /* FMDB-dummy.m */,
+				4C64A575FB1EF46C43747AC415462EAA /* FMDB-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FMDB";
+			sourceTree = "<group>";
+		};
+		756D2DEA8B07B782C3D14BE39C5E91EB /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				44C0AC552B82C7A4C92AD8183222789F /* standard */,
+				51029F8DB21F6256F482D48380BB9191 /* Support Files */,
+			);
+			path = FMDB;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -130,8 +204,8 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				BFB8C92E749ED180124155E2270474D2 /* Pods */,
-				12C98BAA7D04E242DC1C8724A17BAF90 /* Products */,
+				D60B09423451FE0151C6CEF1E0A20C61 /* Pods */,
+				D006F2D27119E40CF5C099C41961B876 /* Products */,
 				10DD4D8D9EFEC115D2B7ED283C0BE402 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -152,39 +226,43 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		BFB8C92E749ED180124155E2270474D2 /* Pods */ = {
+		D006F2D27119E40CF5C099C41961B876 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DEA37EDFE575D4B41E183255F5C2B8C8 /* FMDB */,
+				2D4B83358DAF1B1CD78C58E983D3C1FB /* libFMDB.a */,
+				C270749496D81AB5BCD3602D9F7A7947 /* libPods-SuperNote.a */,
+				16983649511363FB36E92CA2D0DFBEB5 /* libSWTableViewCell.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D60B09423451FE0151C6CEF1E0A20C61 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				756D2DEA8B07B782C3D14BE39C5E91EB /* FMDB */,
+				E8C781DF1727DB0B2506FC25DCC738A1 /* SWTableViewCell */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C89A6930D6DE6039F840782BFE7A2DFB /* standard */ = {
+		E8C781DF1727DB0B2506FC25DCC738A1 /* SWTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				638E465E4B27490B0FB423614C3ADD11 /* FMDatabase.h */,
-				DC7C30F9E55829B027C4913D1F19D68C /* FMDatabase.m */,
-				D2DD52CB174E1DC79111C38E770F6FC8 /* FMDatabaseAdditions.h */,
-				3BCC0EED53ED8D7C1931178E0E4269B4 /* FMDatabaseAdditions.m */,
-				1AF3AEDDA16DD8E28B59FF0788FDDC03 /* FMDatabasePool.h */,
-				400AFB42920EB39709666D3F1A73D6C2 /* FMDatabasePool.m */,
-				33F15B71183AD666DFC49D907F769ACF /* FMDatabaseQueue.h */,
-				C11A8F38580C7A7FF38ACB6A3B412884 /* FMDatabaseQueue.m */,
-				91893D40185E0EFA40FC217BE44A7C0D /* FMDB.h */,
-				69CC8B63F837EA7B053AB8BA07253A25 /* FMResultSet.h */,
-				71B69D4A7150AC2F65A57B7D04F092D4 /* FMResultSet.m */,
+				8DBC5F147E0412E91D8D48F147C9C4B9 /* NSMutableArray+SWUtilityButtons.h */,
+				7E7A9B72CC0D7385193B3054519A5642 /* NSMutableArray+SWUtilityButtons.m */,
+				C14CE977AD14BA5BC63AC5BCF378758C /* SWCellScrollView.h */,
+				8A9EBB51FD38A4CC37B749E952C40A83 /* SWCellScrollView.m */,
+				7F53FF0FCA16B4F8FA00E14C0BD601F9 /* SWLongPressGestureRecognizer.h */,
+				55C2CE8F11EC19780FA4E29581A62E81 /* SWLongPressGestureRecognizer.m */,
+				128F86997CD041EA1D212E70223F7F2B /* SWTableViewCell.h */,
+				35DDDEB0F3F5CC7A0BD81229812ECF96 /* SWTableViewCell.m */,
+				A3675D9E0905E055149E51A11BF3B673 /* SWUtilityButtonTapGestureRecognizer.h */,
+				362EF279875DB1B471A9F77E2390324F /* SWUtilityButtonTapGestureRecognizer.m */,
+				29B597D7E8F42F8F794F5A0DD99B2146 /* SWUtilityButtonView.h */,
+				FDCA920A864C0FD1C230E15C26F5DEDE /* SWUtilityButtonView.m */,
+				410F5D030819517D3D69A7BEE224AEFB /* Support Files */,
 			);
-			name = standard;
-			sourceTree = "<group>";
-		};
-		DEA37EDFE575D4B41E183255F5C2B8C8 /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				C89A6930D6DE6039F840782BFE7A2DFB /* standard */,
-				6A65CEB166911CC900621A37BC272B1F /* Support Files */,
-			);
-			path = FMDB;
+			path = SWTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +281,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B6E6CAB759597592BDF058000BAAD9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				896FA2681814B5CF2D8EA38920A7C942 /* NSMutableArray+SWUtilityButtons.h in Headers */,
+				95ACD26334AB3EC2869024B9031FCE4F /* SWCellScrollView.h in Headers */,
+				EF6A2D7A3D7F71BB51575882E9DF55B4 /* SWLongPressGestureRecognizer.h in Headers */,
+				E1CE06DAC7AFA6692240FBA1D9388A3E /* SWTableViewCell.h in Headers */,
+				5B7A11D97247CDC08DDF09236AD09FFD /* SWUtilityButtonTapGestureRecognizer.h in Headers */,
+				3C68444946546EBF05C90D14FA2BEC87 /* SWUtilityButtonView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		10E78CF302D1CB180CABE474FE1B3C12 /* Pods-SuperNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB790BBA8FA3406D67D033109EC27F1A /* Build configuration list for PBXNativeTarget "Pods-SuperNote" */;
+			buildPhases = (
+				B045B0B05648C12B5571BDA92D5A1931 /* Sources */,
+				F1BBBEAC8D98077697965D9FBE27062D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9B7B51F74BC11BFC0FB843ACEBEC50F /* PBXTargetDependency */,
+				AE233D31E29DB494743AE61A00BA07B6 /* PBXTargetDependency */,
+			);
+			name = "Pods-SuperNote";
+			productName = "Pods-SuperNote";
+			productReference = C270749496D81AB5BCD3602D9F7A7947 /* libPods-SuperNote.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		251D9A6BBA65937F79D90F35B252091B /* SWTableViewCell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D853FD5C351D40992F78D32A7403BFE5 /* Build configuration list for PBXNativeTarget "SWTableViewCell" */;
+			buildPhases = (
+				34A8D775066659F117FED8B050C60A56 /* Sources */,
+				6E73C3C39DB8F76BE89C1BC0DB157150 /* Frameworks */,
+				D2B6E6CAB759597592BDF058000BAAD9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWTableViewCell;
+			productName = SWTableViewCell;
+			productReference = 16983649511363FB36E92CA2D0DFBEB5 /* libSWTableViewCell.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		9F12FB4A63E20F601CFB2E64A65B57C1 /* FMDB */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AC899FD215914230EB9D8B57AD910D0 /* Build configuration list for PBXNativeTarget "FMDB" */;
@@ -220,24 +346,7 @@
 			);
 			name = FMDB;
 			productName = FMDB;
-			productReference = A387FB6FD6231D01E1A6EB93FD2CB8B9 /* libFMDB.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		C09B01162217B081388DD8B91CF19E69 /* Pods-SuperNote */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 424AC0EDB98F76EF5B9BED076C8336E0 /* Build configuration list for PBXNativeTarget "Pods-SuperNote" */;
-			buildPhases = (
-				3B98A79B605DC602BD36A37A67AFA5CD /* Sources */,
-				004DFB2CD64A8E2176C297D24F937B3B /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3340823CD51F1D7897731CD66DA4BDDB /* PBXTargetDependency */,
-			);
-			name = "Pods-SuperNote";
-			productName = "Pods-SuperNote";
-			productReference = 4ED23060EA19A9310D96807DD283756B /* libPods-SuperNote.a */;
+			productReference = 2D4B83358DAF1B1CD78C58E983D3C1FB /* libFMDB.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -257,12 +366,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 12C98BAA7D04E242DC1C8724A17BAF90 /* Products */;
+			productRefGroup = D006F2D27119E40CF5C099C41961B876 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				9F12FB4A63E20F601CFB2E64A65B57C1 /* FMDB */,
-				C09B01162217B081388DD8B91CF19E69 /* Pods-SuperNote */,
+				10E78CF302D1CB180CABE474FE1B3C12 /* Pods-SuperNote */,
+				251D9A6BBA65937F79D90F35B252091B /* SWTableViewCell */,
 			);
 		};
 /* End PBXProject section */
@@ -281,27 +391,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3B98A79B605DC602BD36A37A67AFA5CD /* Sources */ = {
+		34A8D775066659F117FED8B050C60A56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE7214A199805B39ACE54EA84E3D4F9C /* Pods-SuperNote-dummy.m in Sources */,
+				A9F348106375D9B33425EC2EB0EBCC75 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				91F53A0228DEDE7916B003636697072E /* SWCellScrollView.m in Sources */,
+				5BB89ADDFF13A4BD20CF08099EF9D8D6 /* SWLongPressGestureRecognizer.m in Sources */,
+				CE3EB3B08F6C59160510CDA1E9FBB42F /* SWTableViewCell-dummy.m in Sources */,
+				A2904FB3D3791E7CFCA6791C4D9D9ECE /* SWTableViewCell.m in Sources */,
+				A5455C5AA1277B6F0BC92A023C0BAC54 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				E7E92DF1042F7F6A48062C8024E77A07 /* SWUtilityButtonView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B045B0B05648C12B5571BDA92D5A1931 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D8213319B490957901726E23DC9E987 /* Pods-SuperNote-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3340823CD51F1D7897731CD66DA4BDDB /* PBXTargetDependency */ = {
+		AE233D31E29DB494743AE61A00BA07B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SWTableViewCell;
+			target = 251D9A6BBA65937F79D90F35B252091B /* SWTableViewCell */;
+			targetProxy = 19A9F1CFD9C948729D4C381544F80117 /* PBXContainerItemProxy */;
+		};
+		F9B7B51F74BC11BFC0FB843ACEBEC50F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FMDB;
 			target = 9F12FB4A63E20F601CFB2E64A65B57C1 /* FMDB */;
-			targetProxy = 099FF7DDAFD199361EC173CE5BCCFB45 /* PBXContainerItemProxy */;
+			targetProxy = 4D80399EE3BE6F625BF9FA56FF181992 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		31A8482C98021A170C226650BD21375A /* Debug */ = {
+		4F27DBAEA1B2340EF7AD312FFA7043F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 244EB4DD0419B5205D29DB478FA41083 /* Pods-SuperNote.debug.xcconfig */;
 			buildSettings = {
@@ -318,18 +448,37 @@
 			};
 			name = Debug;
 		};
-		7640AA6002F303C469FB3A9B5A07EAFE /* Release */ = {
+		6E8182201DE6BCFF08B9A551DBB55F57 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82130F356A39CC73A713F541A6228F7E /* Pods-SuperNote.release.xcconfig */;
+			baseConfigurationReference = A317CFD1B9B9D23DC9BF497A8DF27992 /* SWTableViewCell.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SWTableViewCell/SWTableViewCell-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7BF7EA2D3CEE9AD7D2745C7FB6A875C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A317CFD1B9B9D23DC9BF497A8DF27992 /* SWTableViewCell.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SWTableViewCell/SWTableViewCell-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -410,7 +559,7 @@
 		};
 		E4B5F495BD67DF619CEF034FBCF15186 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2AC8D08AB9E95E701EC049C53414AEB /* FMDB.xcconfig */;
+			baseConfigurationReference = 6275603496AC06167B450C297D1C50EB /* FMDB.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FMDB/FMDB-prefix.pch";
@@ -428,7 +577,7 @@
 		};
 		E60E09129FBA16F2902AF8748BEC3597 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2AC8D08AB9E95E701EC049C53414AEB /* FMDB.xcconfig */;
+			baseConfigurationReference = 6275603496AC06167B450C297D1C50EB /* FMDB.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FMDB/FMDB-prefix.pch";
@@ -439,6 +588,23 @@
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F4623581290F8B087D3149E49E341DD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82130F356A39CC73A713F541A6228F7E /* Pods-SuperNote.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -465,11 +631,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		424AC0EDB98F76EF5B9BED076C8336E0 /* Build configuration list for PBXNativeTarget "Pods-SuperNote" */ = {
+		AB790BBA8FA3406D67D033109EC27F1A /* Build configuration list for PBXNativeTarget "Pods-SuperNote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				31A8482C98021A170C226650BD21375A /* Debug */,
-				7640AA6002F303C469FB3A9B5A07EAFE /* Release */,
+				4F27DBAEA1B2340EF7AD312FFA7043F2 /* Debug */,
+				F4623581290F8B087D3149E49E341DD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D853FD5C351D40992F78D32A7403BFE5 /* Build configuration list for PBXNativeTarget "SWTableViewCell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E8182201DE6BCFF08B9A551DBB55F57 /* Debug */,
+				7BF7EA2D3CEE9AD7D2745C7FB6A875C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

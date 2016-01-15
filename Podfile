@@ -6,6 +6,7 @@
 target 'SuperNote' do
 
 pod 'FMDB'
+pod 'SWTableViewCell', '~> 0.3.7'
 
 end
 

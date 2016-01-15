@@ -194,7 +194,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.019607843829999999" green="0.63921570780000003" blue="0.13725490870000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CELLID" textLabel="eRo-8Z-Gn2" detailTextLabel="8Dc-G4-sux" style="IBUITableViewCellStyleValue1" id="TnS-SR-DFW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CELLID" textLabel="eRo-8Z-Gn2" detailTextLabel="8Dc-G4-sux" style="IBUITableViewCellStyleValue1" id="TnS-SR-DFW" customClass="SWTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TnS-SR-DFW" id="SBA-tq-Ttw">
