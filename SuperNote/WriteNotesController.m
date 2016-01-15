@@ -8,6 +8,8 @@
 
 #import "WriteNotesController.h"
 #import "SuperNoteManager.h"
+#import "NSString+DateFormatter.h"
+
 
 @interface WriteNotesController ()<UITextViewDelegate>
 
@@ -47,7 +49,7 @@
     if (self.isMovingFromParentViewController) {
         NSLog(@"going back");
         
-        [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSDate date]]];
+        [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
     }
 }
 

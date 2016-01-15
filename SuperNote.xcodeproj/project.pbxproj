@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		910B2F48527D9109A742B430 /* libPods-SuperNote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */; };
+		B818D0C51C494B8D007C97DD /* NSString+DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B818D0C41C494B8D007C97DD /* NSString+DateFormatter.m */; };
 		B819EC111C445583009529DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC101C445583009529DC /* main.m */; };
 		B819EC141C445583009529DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC131C445583009529DC /* AppDelegate.m */; };
 		B819EC171C445583009529DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B819EC161C445583009529DC /* ViewController.m */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		1CFD6E9AB927109497296E26 /* Pods-SuperNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperNote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote.debug.xcconfig"; sourceTree = "<group>"; };
 		4DB22A344901112CC2BC3EFE /* Pods-SuperNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote.release.xcconfig"; sourceTree = "<group>"; };
+		B818D0C31C494B8D007C97DD /* NSString+DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DateFormatter.h"; sourceTree = "<group>"; };
+		B818D0C41C494B8D007C97DD /* NSString+DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DateFormatter.m"; sourceTree = "<group>"; };
 		B819EC0C1C445583009529DC /* SuperNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B819EC101C445583009529DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B819EC121C445583009529DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				B81FD0E11C4804BE00CB03B8 /* EmptyNotesController.m */,
 				B81FD0EF1C48157200CB03B8 /* WriteNotesController.h */,
 				B81FD0F01C48157200CB03B8 /* WriteNotesController.m */,
+				B818D0C31C494B8D007C97DD /* NSString+DateFormatter.h */,
+				B818D0C41C494B8D007C97DD /* NSString+DateFormatter.m */,
 				B819EC181C445583009529DC /* Main.storyboard */,
 				B81FD0EC1C4809C200CB03B8 /* EmptySegue.h */,
 				B81FD0ED1C4809C200CB03B8 /* EmptySegue.m */,
@@ -260,6 +265,7 @@
 				B819EC281C44598B009529DC /* SuperNoteManager.m in Sources */,
 				B81FD0E81C4805D500CB03B8 /* ContainerViewController.m in Sources */,
 				B819EC141C445583009529DC /* AppDelegate.m in Sources */,
+				B818D0C51C494B8D007C97DD /* NSString+DateFormatter.m in Sources */,
 				B81FD0F11C48157200CB03B8 /* WriteNotesController.m in Sources */,
 				B81FD0E51C48052300CB03B8 /* NotesListController.m in Sources */,
 				B819EC111C445583009529DC /* main.m in Sources */,
