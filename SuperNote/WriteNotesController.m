@@ -37,6 +37,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [_textView becomeFirstResponder];
+    
+    //get the notes from datatabse
+    if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
+        
+        _textView.text=[_myManager getStringForRowWithId:_notesID];
+        
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{

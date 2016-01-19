@@ -104,6 +104,16 @@
     [_database close];
 }
 
+-(NSString *)getStringForRowWithId:(int)notesID{
+    
+    [_database open];
+    FMResultSet *results = [_database executeQuery:@"select * from testNotes where notesid=%d"];//,notesID]];
+    
+    [_database close];
+    
+    return [results stringForColumn:@"notes"];
+}
+
 
 -(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2{
     

@@ -31,5 +31,6 @@
 -(void)deleteRowFromDatabaseWithRowID:(int)value;
 -(NSMutableArray *)getDataFromDatabase;
 -(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2;
+-(NSString *)getStringForRowWithId:(int)notesID;
 -(void)updateRecordWithRowID:(int)value withText:(NSString *)string withDate:(NSString *)value2;
 @end
