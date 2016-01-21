@@ -29,7 +29,7 @@
     
     if (_myManager.dataBaseCreated) {
         NSLog(@"data base is created ? - %d",_myManager.dataBaseCreated);
-        
+       
     }
     
 }

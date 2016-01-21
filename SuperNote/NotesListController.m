@@ -156,7 +156,7 @@
 
 // prevent multiple cells from showing utilty buttons simultaneously
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell{
-    
+  
     return YES;
 }
 

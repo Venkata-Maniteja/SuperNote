@@ -68,7 +68,7 @@
         
         [_database open];
         [_database executeUpdate:@"create table testNotes(notesid integer primary key autoincrement, notes text , dTime text)"];
-        
+    _database.logsErrors=YES;
         _dataBaseCreated=YES;
         
         NSLog(@"Database created");
@@ -107,11 +107,19 @@
 -(NSString *)getStringForRowWithId:(int)notesID{
     
     [_database open];
-    FMResultSet *results = [_database executeQuery:@"select * from testNotes where notesid=%d"];//,notesID]];
-    
+    FMResultSet *results = [_database executeQuery:@"select * from testNotes where notesid= ?",@(notesID)];
+    NSString *notes;
+    while([results next]) {
+        notes = [results stringForColumn:@"notes"];
+        
+    }
+    if ([_database hadError]) {
+        NSLog(@"DB Error %d: %@", [_database  lastErrorCode], [_database lastErrorMessage]);
+    }
+
     [_database close];
     
-    return [results stringForColumn:@"notes"];
+    return notes;
 }
 
 
