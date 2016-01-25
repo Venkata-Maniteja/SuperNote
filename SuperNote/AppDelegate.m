@@ -50,7 +50,14 @@
 
 -(void)checkForData{
     
+//    [_myManager clearDatabase];
     
+    if ( [_myManager checkForDataInAllTables]) {
+        NSLog(@"All tables are empty");
+    }else{
+        NSLog(@"All tables are not empty");
+    }
+   
     
     [self changeHomeViewController];
 }

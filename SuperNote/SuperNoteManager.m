@@ -338,10 +338,10 @@ NSString *const TestTable = @"TestTable";
 -(BOOL)checkForDataInAllTables{
     
     [_database open];
-    if ([_database intForQuery:@"SELECT COUNT(notes) FROM testNotes"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM work"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM temp"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM quickNotes"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM personal"]==0&&[_database intForQuery:@"SELECT COUNT(pass) FROM password"]==0){
+    if (!([_database intForQuery:@"SELECT COUNT(notes) FROM testNotes"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM work"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM temp"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM quickNotes"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM personal"]==0&&[_database intForQuery:@"SELECT COUNT(pass) FROM password"]==0)){
         
         [_database close];
-        return YES;
+        return NO;
     }
     
     [_database close];

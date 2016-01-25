@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SuperNote/SuperNoteManager.m"
-            timestampString = "475444806.866295"
+            timestampString = "475452032.652508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "-getDataFromDatabase"
             landmarkType = "5">
          </BreakpointContent>
@@ -144,16 +144,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SuperNote/SuperNoteManager.m"
+            timestampString = "475452032.652508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "-isDatabaseEmpty"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SuperNote/SuperNoteManager.m"
-            timestampString = "475446350.501984"
+            timestampString = "475452264.890715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
-            landmarkName = "-isDatabaseEmpty"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "-checkForDataInAllTables"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
