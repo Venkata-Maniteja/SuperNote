@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
+#import "ContainerViewController.h"
 #import "SuperNoteManager.h"
 
 
@@ -36,12 +38,25 @@
             _myManager.databasePath=_databasePath;
             _myManager.dataBaseCreated=YES;
             [_myManager loadDatabase];
+            [self checkForData];
             NSLog(@"Database already exists");
             NSLog(@"data base path is %@",_myManager.databasePath);
         }
 
 
     return YES;
+}
+
+
+-(void)checkForData{
+    
+    
+    
+    [self changeHomeViewController];
+}
+
+-(void)changeHomeViewController{
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

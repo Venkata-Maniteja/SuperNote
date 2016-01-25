@@ -41,7 +41,10 @@
     
     //TODO: check data from database and load the VC based on it
     
+    _myManager.currentTableName=@"TestTable";
+    _myManager.queryMode=14;
     if ([_myManager isDatabaseEmpty]) {
+        
         
         _containerViewController.currentSegueIdentifier=@"embedEmptyNotes";
         

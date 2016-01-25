@@ -11,7 +11,10 @@
 #import "NSString+DateFormatter.h"
 
 
-@interface WriteNotesController ()<UITextViewDelegate>
+@interface WriteNotesController ()<UITextViewDelegate>{
+    
+    BOOL    textChanged;
+}
 
 @property (nonatomic,weak) SuperNoteManager *myManager;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
@@ -25,6 +28,7 @@
     // Do any additional setup after loading the view.
     
     _myManager=[SuperNoteManager sharedInstance];
+    _textView.delegate=self;
     
     
     if (_myManager.dataBaseCreated) {
@@ -48,6 +52,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -55,20 +60,32 @@
     
     if (self.isMovingFromParentViewController) {
         NSLog(@"going back");
-        if (![_textView.text isEqualToString:@""]) {
+        [self insertTextintoDatabase];
+    }
+    
+}
+
+-(void)insertTextintoDatabase{
+    
+    if (![_textView.text isEqualToString:@""]) {
+        
+        if ([_notesStatus isEqualToString:@"NewNotes"]) {
             
-            if ([_notesStatus isEqualToString:@"NewNotes"]) {
-                
-                [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+            _myManager.queryMode=10;
+            [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
             
-            }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
-               
+        }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
+            
+            if (textChanged) {
+                 _myManager.queryMode=13;
                 [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
             }
-        
         }
+        
     }
 }
+    
+
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -85,6 +102,7 @@
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
+    textChanged=YES;
     return YES;
 }
 

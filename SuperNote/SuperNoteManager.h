@@ -8,18 +8,30 @@
 
 #import <Foundation/Foundation.h>
 #import <FMDatabase.h>
-
 @interface SuperNoteManager : NSObject
+
+typedef enum {
+    kInsert=10,
+    kGet=11,
+    kDelete=12,
+    kUpdate=13,
+    kCount=14,
+    kGetAll=15
+}QueryMode;
+
 
 @property (nonatomic, assign) BOOL  dataBaseCreated;
 //@property (nonatomic, assign) BOOL  dataBaseCreated;
-
+@property (nonatomic) QueryMode queryMode;
 
 @property (nonatomic, strong) FMDatabase *database;
 @property (nonatomic, strong) NSString *databasePath;
+@property (nonatomic, strong) NSString *currentTableName;
 
 @property (nonatomic,strong) NSMutableDictionary *dataDic;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+
+
 
 + (SuperNoteManager*)sharedInstance;
 
@@ -28,6 +40,7 @@
 -(void)clearDatabase;
 -(void)loadDatabase;
 -(BOOL)isDatabaseEmpty;
+-(BOOL)checkForDataInAllTables;
 -(void)deleteRowFromDatabaseWithRowID:(int)value;
 -(NSMutableArray *)getDataFromDatabase;
 -(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2;

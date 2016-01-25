@@ -55,6 +55,7 @@
 
 -(void)getData{
     
+    _myManager.queryMode=15; //kGetAll
    _dataArray=[_myManager getDataFromDatabase];
     
     

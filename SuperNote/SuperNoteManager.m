@@ -9,6 +9,14 @@
 #import "SuperNoteManager.h"
 #import <FMDatabaseAdditions.h>
 
+NSString *const WorkTable = @"WorkTable";
+NSString *const TempTable = @"TempTable";
+NSString *const QucikTable = @"QucikTable";
+NSString *const PersoTable = @"PersoTable";
+NSString *const PassTable = @"PassTable";
+NSString *const TestTable = @"TestTable";
+
+
 @implementation SuperNoteManager
 
 + (SuperNoteManager*)sharedInstance
@@ -68,7 +76,12 @@
         
         [_database open];
         [_database executeUpdate:@"create table testNotes(notesid integer primary key autoincrement, notes text , dTime text)"];
-    _database.logsErrors=YES;
+        [_database executeUpdate:@"create table work(notesid integer primary key autoincrement, notes text , dTime text)"];
+        [_database executeUpdate:@"create table temp(notesid integer primary key autoincrement, notes text , dTime text)"];
+        [_database executeUpdate:@"create table quickNotes(notesid integer primary key autoincrement, notes text , dTime text)"];
+        [_database executeUpdate:@"create table personal(notesid integer primary key autoincrement, notes text , dTime text)"];
+        [_database executeUpdate:@"create table password(passid integer primary key autoincrement, passName text , passWord text)"];
+        _database.logsErrors=YES;
         _dataBaseCreated=YES;
         
         NSLog(@"Database created");
@@ -93,6 +106,8 @@
 }
 
 
+
+
 -(void)queryDatabaseWithQuery:(NSString *) query{
     
     FMResultSet *results = [_database executeQuery:query];
@@ -104,14 +119,139 @@
     [_database close];
 }
 
+-(NSString *)getQueryStringWithQueryMode:(QueryMode )mode{
+    
+    switch (mode) {
+            
+        case kGetAll:
+            
+            if ([_currentTableName isEqualToString:TestTable]) {
+                return @"select * from testNotes";
+            }else if ([_currentTableName isEqualToString:WorkTable]) {
+                return @"select * from work";
+            }else if ([_currentTableName isEqualToString:TempTable]) {
+                return @"select * from temp";
+            }else if ([_currentTableName isEqualToString:QucikTable]) {
+                return @"select * from quickNotes";
+            }else if ([_currentTableName isEqualToString:PassTable]) {
+                return @"select * from password";
+            }else if ([_currentTableName isEqualToString:PersoTable]) {
+                return @"select * from personal";
+            }
+
+            
+            break;
+            
+        case kGet:
+            
+            if ([_currentTableName isEqualToString:TestTable]) {
+                return @"select * from testNotes where notesid= ?";
+            }else if ([_currentTableName isEqualToString:WorkTable]) {
+                return @"select * from work where notesid= ?";
+            }else if ([_currentTableName isEqualToString:TempTable]) {
+                return @"select * from temp where notesid= ?";
+            }else if ([_currentTableName isEqualToString:QucikTable]) {
+                return @"select * from quickNotes where notesid= ?";
+            }else if ([_currentTableName isEqualToString:PassTable]) {
+                return @"select * from password where passid= ?";
+            }else if ([_currentTableName isEqualToString:PersoTable]) {
+                return @"select * from personal where passid= ?";
+            }
+
+            break;
+        case kInsert:
+            
+            if ([_currentTableName isEqualToString:TestTable]) {
+                return @"insert into testNotes (notes,dTime) values (?,?)";
+            }else if ([_currentTableName isEqualToString:WorkTable]) {
+                return @"insert into work (notes,dTime) values (?,?)";
+            }else if ([_currentTableName isEqualToString:TempTable]) {
+                return @"insert into temp (notes,dTime) values (?,?)";
+            }else if ([_currentTableName isEqualToString:QucikTable]) {
+                return @"insert into quickNotes (notes,dTime) values (?,?)";
+            }else if ([_currentTableName isEqualToString:PassTable]) {
+                return @"insert into password (passWord,dTime) values (?,?)";
+            }else if ([_currentTableName isEqualToString:PersoTable]) {
+                return @"select * from personal where passid= ?";
+            }
+            
+            break;
+            
+        case kUpdate:
+            
+            if ([_currentTableName isEqualToString:TestTable]) {
+                return @"update testNotes set notes=?,dTime=? where notesid=?";
+            }else if ([_currentTableName isEqualToString:WorkTable]) {
+                return @"update work set notes=?,dTime=? where notesid=?";
+            }else if ([_currentTableName isEqualToString:TempTable]) {
+                return @"update temp set notes=?,dTime=? where notesid=?";
+            }else if ([_currentTableName isEqualToString:QucikTable]) {
+                return @"update quickNotes set notes=?,dTime=? where notesid=?";
+            }else if ([_currentTableName isEqualToString:PassTable]) {
+                return @"update password set notes=?,dTime=? where notesid=?";
+            }else if ([_currentTableName isEqualToString:PersoTable]) {
+                return @"update password set passWord=?,dTime=? where passid=?";
+            }
+                
+            
+            break;
+        case kDelete:
+            
+            if ([_currentTableName isEqualToString:TestTable]) {
+                return @"delete from testNotes where notesid=%d";
+            }else if ([_currentTableName isEqualToString:WorkTable]) {
+                return @"delete from work where notesid=%d";
+            }else if ([_currentTableName isEqualToString:TempTable]) {
+                return @"delete from temp where notesid=%d";
+            }else if ([_currentTableName isEqualToString:QucikTable]) {
+                return @"delete from quickNotes where notesid=%d";
+            }else if ([_currentTableName isEqualToString:PassTable]) {
+                return @"delete from password where notesid=%d";
+            }else if ([_currentTableName isEqualToString:PersoTable]) {
+                return @"delete from personal where notesid=%d";
+            }
+
+            
+            break;
+            
+        case kCount:
+            
+            if ([_currentTableName isEqualToString:TestTable]) {
+                return @"SELECT COUNT(notes) FROM testNotes";
+            }else if ([_currentTableName isEqualToString:WorkTable]) {
+                return @"SELECT COUNT(notes) FROM work";
+            }else if ([_currentTableName isEqualToString:TempTable]) {
+                return @"SELECT COUNT(notes) FROM temp";
+            }else if ([_currentTableName isEqualToString:QucikTable]) {
+                return @"SELECT COUNT(notes) FROM quickNotes";
+            }else if ([_currentTableName isEqualToString:PassTable]) {
+                return @"SELECT COUNT(notes) FROM password";
+            }else if ([_currentTableName isEqualToString:PersoTable]) {
+                return @"SELECT COUNT(notes) FROM personal";
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    return @"";
+}
 -(NSString *)getStringForRowWithId:(int)notesID{
     
+    //check for the current table name and change the query
+    
     [_database open];
-    FMResultSet *results = [_database executeQuery:@"select * from testNotes where notesid= ?",@(notesID)];
+    FMResultSet *results = [_database executeQuery:[self getQueryStringWithQueryMode:_queryMode],@(notesID)];
     NSString *notes;
     while([results next]) {
+        if ([_currentTableName isEqualToString:TestTable]) {
+             notes = [results stringForColumn:@"pass"];
+        }else{
         notes = [results stringForColumn:@"notes"];
-        
+        }
     }
     if ([_database hadError]) {
         NSLog(@"DB Error %d: %@", [_database  lastErrorCode], [_database lastErrorMessage]);
@@ -126,7 +266,7 @@
 -(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2{
     
     [_database open];
-    [_database executeUpdate:@"insert into testNotes (notes,dTime) values (?,?)",value1,value2];
+    [_database executeUpdate:[self getQueryStringWithQueryMode:_queryMode],value1,value2];
     [_database close];
 }
 
@@ -138,7 +278,7 @@
     }
     
     [_database beginTransaction];
-    BOOL success =[_database executeUpdate:@"update testNotes set notes=?,dTime=? where notesid=?",string,value2,[NSNumber numberWithInt:value]];
+    BOOL success =[_database executeUpdate:[self getQueryStringWithQueryMode:_queryMode],string,value2,[NSNumber numberWithInt:value]];
     
     
     if (success) {
@@ -161,6 +301,11 @@
     
     [_database open];
     [_database executeUpdate:@"delete from testNotes"];
+    [_database executeUpdate:@"delete from quickNotes"];
+    [_database executeUpdate:@"delete from work"];
+    [_database executeUpdate:@"delete from temp"];
+    [_database executeUpdate:@"delete from personal"];
+    [_database executeUpdate:@"delete from password"];
     [_database close];
     
     
@@ -169,7 +314,7 @@
 -(void)deleteRowFromDatabaseWithRowID:(int)value{
     
     [_database open];
-    [_database executeUpdate:[NSString stringWithFormat:@"delete from testNotes where notesid=%d",value]];
+    [_database executeUpdate:[NSString stringWithFormat:[self getQueryStringWithQueryMode:_queryMode],value]];
     [_database close];
     
     
@@ -179,7 +324,7 @@
     
     [_database open];
     
-    if ([_database intForQuery:@"SELECT COUNT(notes) FROM testNotes"]==0){
+    if ([_database intForQuery:[self getQueryStringWithQueryMode:_queryMode]]==0){
         
         [_database close];
         return YES;
@@ -188,6 +333,19 @@
     [_database close];
     return NO;
     
+}
+
+-(BOOL)checkForDataInAllTables{
+    
+    [_database open];
+    if ([_database intForQuery:@"SELECT COUNT(notes) FROM testNotes"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM work"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM temp"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM quickNotes"]==0&&[_database intForQuery:@"SELECT COUNT(notes) FROM personal"]==0&&[_database intForQuery:@"SELECT COUNT(pass) FROM password"]==0){
+        
+        [_database close];
+        return YES;
+    }
+    
+    [_database close];
+    return YES;
 }
 
 
@@ -199,7 +357,7 @@
     
     [_database open];
     
-    FMResultSet *results = [_database executeQuery:@"select * from testNotes"];
+    FMResultSet *results = [_database executeQuery:[self getQueryStringWithQueryMode:_queryMode]];
     while([results next]) {
         NSString *notes = [results stringForColumn:@"notes"];
         NSString *dateTime  = [results stringForColumn:@"dTime"];
@@ -220,5 +378,6 @@
     
     return _dataArray;
 }
+
 
 @end
