@@ -11,7 +11,7 @@
 
 NSString *const WorkTable = @"WorkTable";
 NSString *const TempTable = @"TempTable";
-NSString *const QucikTable = @"QucikTable";
+NSString *const QucikTable = @"QuickTable";
 NSString *const PersoTable = @"PersoTable";
 NSString *const PassTable = @"PassTable";
 NSString *const TestTable = @"TestTable";
@@ -172,7 +172,7 @@ NSString *const TestTable = @"TestTable";
             }else if ([_currentTableName isEqualToString:PassTable]) {
                 return @"insert into password (passWord,dTime) values (?,?)";
             }else if ([_currentTableName isEqualToString:PersoTable]) {
-                return @"select * from personal where passid= ?";
+                return @"insert into personal (notes,dTime) values (?,?)";
             }
             
             break;

@@ -47,18 +47,28 @@
     if ([_tableName isEqualToString:@"WorkTable"]) {
         self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:245/255.0 green:245/255.0 blue:220/255.0 alpha:1];
         self.barTitle.title=@"Work Notes";
+        _myManager.currentTableName=@"WorkTable";
+        
     }else if ([_tableName isEqualToString:@"PersoTable"]) {
         self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:54/255.0 green:11/255.0 blue:88/255.0 alpha:1];
         self.barTitle.title=@"Personal Notes";
+        _myManager.currentTableName=@"PersoTable";
+        
     }else if ([_tableName isEqualToString:@"TempTable"]) {
         self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:242/255.0 green:71/255.0 blue:63/255.0 alpha:1];
         self.barTitle.title=@"Temporary Notes";
+        _myManager.currentTableName=@"TempTable";
+
     }else if ([_tableName isEqualToString:@"QuickTable"]) {
         self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed: 0.296 green: 0.463 blue: 0.767 alpha: 1];
         self.barTitle.title=@"Quick Notes";
+        _myManager.currentTableName=@"QuickTable";
+
     }else if ([_tableName isEqualToString:@"PassTable"]) {
         self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:134/255.0 green:198/255.0 blue:124/255.0 alpha:1];
         self.barTitle.title=@"Password Notes";
+        _myManager.currentTableName=@"PassTable";
+
     }
     
     
