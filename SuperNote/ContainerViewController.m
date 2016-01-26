@@ -40,10 +40,7 @@
     [super viewWillAppear:animated];
     
     self.transitionInProgress = NO;
-
-//    self.currentSegueIdentifier = SegueIdentifierEmptyNotes;
     [self performSegueWithIdentifier:self.currentSegueIdentifier sender:nil];
-
     
 }
 
@@ -94,6 +91,7 @@
                 // an initial load and not a swap.
                 [self addChildViewController:segue.destinationViewController];
                 UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+                destView.backgroundColor=_viewColor;
                 destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
                 [self.view addSubview:destView];
@@ -112,6 +110,7 @@
                 // an initial load and not a swap.
                 [self addChildViewController:segue.destinationViewController];
                 UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+                 destView.backgroundColor=_viewColor;
                 destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
                 [self.view addSubview:destView];
@@ -132,6 +131,7 @@
             // an initial load and not a swap.
             [self addChildViewController:segue.destinationViewController];
             UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+             destView.backgroundColor=_viewColor;
             destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
             [self.view addSubview:destView];

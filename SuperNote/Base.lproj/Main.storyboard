@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,11 +35,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hn7-4E-CH3">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="RfV-MG-gla">
-                            <connections>
-                                <action selector="presetnSettins:" destination="BYZ-38-t0r" id="dma-Yo-0M1"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kwR-eZ-HcP">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -50,17 +45,62 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addNotes" destination="kwR-eZ-HcP" id="vGc-XA-UL6"/>
-                        <outlet property="settings" destination="RfV-MG-gla" id="FpD-Sk-3FQ"/>
+                        <outlet property="barTitle" destination="Hn7-4E-CH3" id="kQO-w9-AjO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1439" y="437"/>
+            <point key="canvasLocation" x="2251" y="437"/>
+        </scene>
+        <!--Test Navigation View Controller-->
+        <scene sceneID="RIw-6O-gvy">
+            <objects>
+                <viewController id="0hY-xw-Ofi" customClass="TestNavigationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zVq-mZ-2t5"/>
+                        <viewControllerLayoutGuide type="bottom" id="C1o-RD-dZk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ocv-LT-GGL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hi8-Pw-YFF">
+                                <rect key="frame" x="145" y="78" width="435" height="410"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5F-n7-CaL">
+                                        <rect key="frame" x="51" y="29" width="345" height="352"/>
+                                        <color key="backgroundColor" red="1" green="0.73396946639090588" blue="0.26974183518603034" alpha="1" colorSpace="calibratedRGB"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="U5F-n7-CaL" firstAttribute="top" secondItem="Hi8-Pw-YFF" secondAttribute="top" constant="29" id="09Z-h4-eIg"/>
+                                    <constraint firstItem="U5F-n7-CaL" firstAttribute="centerX" secondItem="Hi8-Pw-YFF" secondAttribute="centerX" id="DRK-ke-KWx"/>
+                                    <constraint firstItem="U5F-n7-CaL" firstAttribute="width" secondItem="Hi8-Pw-YFF" secondAttribute="height" multiplier="69:82" id="FRG-qM-JEl"/>
+                                    <constraint firstItem="U5F-n7-CaL" firstAttribute="centerY" secondItem="Hi8-Pw-YFF" secondAttribute="centerY" id="lQp-tB-qRW"/>
+                                    <constraint firstAttribute="width" secondItem="Hi8-Pw-YFF" secondAttribute="height" multiplier="87:82" id="zWt-zY-Dm7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hi8-Pw-YFF" firstAttribute="trailing" secondItem="Ocv-LT-GGL" secondAttribute="trailingMargin" id="5SO-ND-d5J"/>
+                            <constraint firstItem="C1o-RD-dZk" firstAttribute="top" secondItem="Hi8-Pw-YFF" secondAttribute="bottom" constant="112" id="biJ-ak-8Vf"/>
+                            <constraint firstItem="Hi8-Pw-YFF" firstAttribute="top" secondItem="zVq-mZ-2t5" secondAttribute="bottom" constant="58" id="x41-9k-h2U"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5Gx-m7-s5h"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-PH-zy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994" y="757"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tKb-vk-dhx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lpg-bK-mf9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="lpg-bK-mf9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hqY-aA-I2i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -74,12 +114,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKA-PU-A6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="627" y="437"/>
+            <point key="canvasLocation" x="1439" y="437"/>
         </scene>
         <!--Menu-->
         <scene sceneID="2qz-bS-7GB">
             <objects>
-                <viewController id="DaX-Id-6PE" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="DaX-Id-6PE" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7y4-MX-Cib"/>
                         <viewControllerLayoutGuide type="bottom" id="Kgt-FE-leE"/>
@@ -241,7 +281,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g13-Ml-BUa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g13-Ml-BUa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -262,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZO-mQ-Tll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2163" y="437"/>
+            <point key="canvasLocation" x="2975" y="437"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="sww-u2-Tts">
@@ -284,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGU-h0-XA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251" y="1216"/>
+            <point key="canvasLocation" x="3063" y="1216"/>
         </scene>
         <!--Notes List Controller-->
         <scene sceneID="lov-fw-53y">
@@ -351,7 +391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aot-sx-ocn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3007" y="1216"/>
+            <point key="canvasLocation" x="3819" y="1216"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3ui-Nt-xFx">
@@ -371,8 +411,26 @@
             </objects>
             <point key="canvasLocation" x="733" y="1444"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OiO-ff-IdJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="biY-9i-8YK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XNB-30-vky">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0hY-xw-Ofi" kind="relationship" relationship="rootViewController" id="xua-9B-ZHZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5rA-hc-D7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182" y="757"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UhP-dB-Mg8"/>
+        <segue reference="C6c-p3-h99"/>
     </inferredMetricsTieBreakers>
 </document>

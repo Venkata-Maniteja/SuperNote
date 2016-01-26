@@ -5,6 +5,15 @@
 //  Created by Venkata Maniteja on 2016-01-11.
 //  Copyright © 2016 Venkata Maniteja. All rights reserved.
 //
+//
+//typedef enum {
+//    kInsert=10,
+//    kGet=11,
+//    kDelete=12,
+//    kUpdate=13,
+//    kCount=14,
+//    kGetAll=15
+//}QueryMode;
 
 #import "ViewController.h"
 #import "ContainerViewController.h"
@@ -15,6 +24,7 @@
 
 @property (nonatomic, weak)     IBOutlet UIBarButtonItem                       *   addNotes;
 @property (nonatomic, weak)     IBOutlet UIBarButtonItem                       *   settings;
+@property (nonatomic, weak)     IBOutlet UINavigationItem                      *   barTitle;
 @property (nonatomic, weak)              ContainerViewController               *   containerViewController;
 @property (nonatomic, strong)            SuperNoteManager                      *   myManager;
 
@@ -27,8 +37,31 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     _myManager=[SuperNoteManager sharedInstance];
+    [self customiseNavBar];
     
    
+}
+
+-(void)customiseNavBar{
+ 
+    if ([_tableName isEqualToString:@"WorkTable"]) {
+        self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:245/255.0 green:245/255.0 blue:220/255.0 alpha:1];
+        self.barTitle.title=@"Work Notes";
+    }else if ([_tableName isEqualToString:@"PersoTable"]) {
+        self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:54/255.0 green:11/255.0 blue:88/255.0 alpha:1];
+        self.barTitle.title=@"Personal Notes";
+    }else if ([_tableName isEqualToString:@"TempTable"]) {
+        self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:242/255.0 green:71/255.0 blue:63/255.0 alpha:1];
+        self.barTitle.title=@"Temporary Notes";
+    }else if ([_tableName isEqualToString:@"QuickTable"]) {
+        self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed: 0.296 green: 0.463 blue: 0.767 alpha: 1];
+        self.barTitle.title=@"Quick Notes";
+    }else if ([_tableName isEqualToString:@"PassTable"]) {
+        self.navigationController.navigationBar.barTintColor=[UIColor colorWithRed:134/255.0 green:198/255.0 blue:124/255.0 alpha:1];
+        self.barTitle.title=@"Password Notes";
+    }
+    
+    
 }
 
 
@@ -40,14 +73,15 @@
     //load first view controller in our case it is Empty View
     
     //TODO: check data from database and load the VC based on it
+    //TODO: need to pass some parameters like background color, image based on the button selected previoiusly
     
-    _myManager.currentTableName=@"TestTable";
-    _myManager.queryMode=14;
+    _myManager.currentTableName=_tableName;
+    _myManager.queryMode=14;  //kCount
     if ([_myManager isDatabaseEmpty]) {
         
         
         _containerViewController.currentSegueIdentifier=@"embedEmptyNotes";
-        
+        _containerViewController.viewColor=self.navigationController.navigationBar.barTintColor;
     }else{
         
         _containerViewController.currentSegueIdentifier=@"embedNotesList";

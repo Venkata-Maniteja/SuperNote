@@ -8,6 +8,8 @@
 
 #import "HomeViewController.h"
 #import "CustomButton.h"
+#import "ViewController.h"
+#import "UINavigationController+ CompletionHandler.h"
 @interface HomeViewController (){
     
     NSTimer *timer;
@@ -30,17 +32,23 @@
     floatVal=0;
     // Do any additional setup after loading the view.
     
+    [self addButtonsAndCustomiseView];
+    
+}
+
+-(void)addButtonsAndCustomiseView{
+    
     self.view.backgroundColor=[UIColor colorWithRed:102/255.0 green:169/255.0 blue:251/255.0 alpha:1];
     _workButton.butTitle=@"Work";
     _workButton.textSize=CGSizeMake(100, 30);
     _workButton.butTitleColor=[UIColor blackColor];
     _workButton.backgroundColor=[UIColor colorWithRed:245/255.0 green:245/255.0 blue:220/255.0 alpha:1];
     _workButton.backColor=[UIColor colorWithRed:245/255.0 green:245/255.0 blue:220/255.0 alpha:1];
-     [_workButton setNeedsDisplay];
+    [_workButton setNeedsDisplay];
     
     _passButton.butTitle=@"Password";
     _passButton.textSize=CGSizeMake(100, 30);
-     _passButton.butTitleColor=[UIColor blackColor];
+    _passButton.butTitleColor=[UIColor blackColor];
     _passButton.backgroundColor=[UIColor colorWithRed:134/255.0 green:198/255.0 blue:124/255.0 alpha:1];
     _passButton.backColor=[UIColor colorWithRed:134/255.0 green:198/255.0 blue:124/255.0 alpha:1];
     [_passButton setNeedsDisplay];
@@ -65,7 +73,7 @@
     _personalButton.backgroundColor=[UIColor colorWithRed:54/255.0 green:11/255.0 blue:88/255.0 alpha:1];
     _personalButton.backColor=[UIColor colorWithRed:54/255.0 green:11/255.0 blue:88/255.0 alpha:1];
     [_personalButton setNeedsDisplay];
-  
+
 }
 
 -(void)rotate{
@@ -93,7 +101,36 @@
     
     NSLog(@"touched");
     
+    //need to remove the timer here,
+    //TODO: place the timer in viewWillAppear later
    timer= [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(rotate) userInfo:nil repeats:YES];
+    
+    
+    
+    if (CGRectContainsPoint(_workButton.bounds, [touches.anyObject locationInView:_workButton])) {
+        
+        [self presentWorkLabelNotesController];
+    }
+    
+    if (CGRectContainsPoint(_passButton.bounds, [touches.anyObject locationInView:_passButton])) {
+        
+        [self presentPassLabelNotesController];
+    }
+    
+    if (CGRectContainsPoint(_tempButton.bounds, [touches.anyObject locationInView:_tempButton])) {
+        
+        [self presentTempLabelNotesController];
+    }
+    
+    if (CGRectContainsPoint(_quickButton.bounds, [touches.anyObject locationInView:_quickButton])) {
+        
+        [self presentQuickLabelNotesController];
+    }
+    
+    if (CGRectContainsPoint(_personalButton.bounds, [touches.anyObject locationInView:_personalButton])) {
+        
+        [self presentPersoLabelNotesController];
+    }
     
 }
 
@@ -109,7 +146,70 @@
     
 }
 
+-(void)presentWorkLabelNotesController{
+    
+    ViewController *vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.tableName=@"WorkTable";
+    [self.navigationController completionhandler_pushViewController:vc animated:YES completion:^{
+       
+        NSLog(@"oush completed");
+        [timer invalidate];
+        
+    }];
+    
+}
 
+-(void)presentTempLabelNotesController{
+    
+    ViewController *vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.tableName=@"TempTable";
+    [self.navigationController completionhandler_pushViewController:vc animated:YES completion:^{
+        
+        NSLog(@"oush completed");
+        [timer invalidate];
+        
+    }];
+    
+}
+
+-(void)presentQuickLabelNotesController{
+    
+    ViewController *vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.tableName=@"QuickTable";
+    [self.navigationController completionhandler_pushViewController:vc animated:YES completion:^{
+        
+        NSLog(@"oush completed");
+        [timer invalidate];
+        
+    }];
+    
+}
+
+-(void)presentPersoLabelNotesController{
+    
+    ViewController *vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.tableName=@"PersoTable";
+    [self.navigationController completionhandler_pushViewController:vc animated:YES completion:^{
+        
+        NSLog(@"oush completed");
+        [timer invalidate];
+        
+    }];
+    
+}
+
+-(void)presentPassLabelNotesController{
+    
+    ViewController *vc=[self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.tableName=@"PassTable";
+    [self.navigationController completionhandler_pushViewController:vc animated:YES completion:^{
+        
+        NSLog(@"oush completed");
+        [timer invalidate];
+        
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "ContainerViewController.h"
 #import "SuperNoteManager.h"
+#import "UINavigationController+ CompletionHandler.h"
 
 
 @interface AppDelegate ()
@@ -51,11 +52,22 @@
 -(void)checkForData{
     
 //    [_myManager clearDatabase];
-    
     if ( [_myManager checkForDataInAllTables]) {
         NSLog(@"All tables are empty");
+        
+        //load empty view, send currentSegueIdentifier as EmtpoyNote
     }else{
         NSLog(@"All tables are not empty");
+        //load the HOmeScreenView witht proper labels
+        
+        UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        HomeViewController *hVC=[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        
+        UINavigationController *mNavVC=[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
+        
+        mNavVC.viewControllers=@[hVC];
+        self.window.rootViewController=mNavVC;
     }
    
     

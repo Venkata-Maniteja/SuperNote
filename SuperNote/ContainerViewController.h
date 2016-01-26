@@ -11,7 +11,7 @@
 @interface ContainerViewController : UIViewController
 
 @property (strong, nonatomic) NSString *currentSegueIdentifier;
-
+@property (nonatomic, strong) UIColor *viewColor;
 - (void)swapViewControllers;
 
 @end
