@@ -53,6 +53,10 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+    if ((_myManager.currentTableName==(id)[NSNull null])||_myManager.currentTableName.length==0) {
+        [self showAlert];
+    }
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -79,12 +83,47 @@
             if (textChanged) {
                  _myManager.queryMode=13;
                 [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+               
             }
         }
         
     }
 }
+
+
+-(void)showAlert{
     
+    UIAlertController *aC=[UIAlertController alertControllerWithTitle:@"Chose Label" message:@"Kindly choose the label you want his note to be categorised as" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *work=[UIAlertAction actionWithTitle:@"Work" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       
+        _myManager.currentTableName=@"WorkTable";
+        [aC dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *temp=[UIAlertAction actionWithTitle:@"Temporary" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        _myManager.currentTableName=@"TempTable";
+        [aC dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *pass=[UIAlertAction actionWithTitle:@"Password" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        _myManager.currentTableName=@"PassTable";
+        [aC dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *perso=[UIAlertAction actionWithTitle:@"Personal" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        _myManager.currentTableName=@"PersoTable";
+        [aC dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [aC addAction:work];
+    [aC addAction:temp];
+    [aC addAction:pass];
+    [aC addAction:perso];
+    
+    [self presentViewController:aC animated:YES completion:nil];
+   
+}
 
 
 -(void)viewDidDisappear:(BOOL)animated{

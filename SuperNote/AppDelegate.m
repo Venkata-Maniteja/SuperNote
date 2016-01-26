@@ -56,6 +56,7 @@
         NSLog(@"All tables are empty");
         
         //load empty view, send currentSegueIdentifier as EmtpoyNote
+        
     }else{
         NSLog(@"All tables are not empty");
         //load the HOmeScreenView witht proper labels

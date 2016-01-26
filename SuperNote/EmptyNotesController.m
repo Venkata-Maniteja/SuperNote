@@ -7,8 +7,12 @@
 //
 
 #import "EmptyNotesController.h"
+#import "HomeViewController.h"
+#import "AppDelegate.h"
+#import "SuperNoteManager.h"
 
 @interface EmptyNotesController ()
+@property (nonatomic, strong) SuperNoteManager *myManager;
 
 @end
 
@@ -17,10 +21,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _myManager=[SuperNoteManager sharedInstance];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    if ( [_myManager checkForDataInAllTables]) {
+        NSLog(@"All tables are empty");
+        
+        //load empty view, send currentSegueIdentifier as EmtpoyNote
+        
+    }else{
+
+     //a note is saved, show home view controller
+    [self changeRootView];
+    }
+    
+}
+
+-(void)changeRootView{
+    
+   
+    UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    HomeViewController *hVC=[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    
+    UINavigationController *mNavVC=[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
+    
+    mNavVC.viewControllers=@[hVC];
+    
+    [[UIApplication sharedApplication].keyWindow setRootViewController:mNavVC];
     
 }
 
