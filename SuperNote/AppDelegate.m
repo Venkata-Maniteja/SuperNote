@@ -51,14 +51,14 @@
 
 -(void)checkForData{
     
-//    [_myManager clearDatabase];
-    if ( [_myManager checkForDataInAllTables]) {
-        NSLog(@"All tables are empty");
-        
-        //load empty view, send currentSegueIdentifier as EmtpoyNote
-        
-    }else{
-        NSLog(@"All tables are not empty");
+////    [_myManager clearDatabase];
+//    if ( [_myManager checkForDataInAllTables]) {
+//        NSLog(@"All tables are empty");
+//        
+//        //load empty view, send currentSegueIdentifier as EmtpoyNote
+//        
+////    }else{
+//        NSLog(@"All tables are not empty");
         //load the HOmeScreenView witht proper labels
         
         UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -69,7 +69,7 @@
         
         mNavVC.viewControllers=@[hVC];
         self.window.rootViewController=mNavVC;
-    }
+//    }
    
     
     [self changeHomeViewController];

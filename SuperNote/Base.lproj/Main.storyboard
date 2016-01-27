@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0Y-PH-zy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="757"/>
+            <point key="canvasLocation" x="127" y="651"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tKb-vk-dhx">
@@ -223,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZi-kr-slC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="1444"/>
+            <point key="canvasLocation" x="2571" y="1940"/>
         </scene>
         <!--Empty Notes Controller-->
         <scene sceneID="nT7-r3-dl3">
@@ -267,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pda-j3-kfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251" y="1948"/>
+            <point key="canvasLocation" x="3400" y="1972"/>
         </scene>
         <!--Write Notes Controller-->
         <scene sceneID="vhh-dw-rVr">
@@ -320,6 +320,7 @@
                     <connections>
                         <segue destination="Kda-dx-AgP" kind="custom" identifier="embedNotesList" customClass="EmptySegue" id="4MS-CU-ifB"/>
                         <segue destination="BSi-AB-Gwc" kind="custom" identifier="embedEmptyNotes" customClass="EmptySegue" id="EOF-gA-6qX"/>
+                        <segue destination="DaX-Id-6PE" kind="custom" identifier="embedHomeView" customClass="EmptySegue" id="G8x-Yq-sdi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGU-h0-XA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -394,24 +395,6 @@
             <point key="canvasLocation" x="3819" y="1216"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="3ui-Nt-xFx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wH5-Vr-FmW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P2D-Ug-3oI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="DaX-Id-6PE" kind="relationship" relationship="rootViewController" id="pGQ-vR-KyB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G94-st-Uod" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="733" y="1444"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="OiO-ff-IdJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="biY-9i-8YK" sceneMemberID="viewController">
@@ -427,7 +410,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rA-hc-D7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="182" y="757"/>
+            <point key="canvasLocation" x="-354" y="779"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

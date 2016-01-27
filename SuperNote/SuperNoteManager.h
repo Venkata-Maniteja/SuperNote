@@ -26,7 +26,7 @@ typedef enum {
 
 @property (nonatomic, strong) FMDatabase *database;
 @property (nonatomic, strong) NSString *databasePath;
-@property (nonatomic, strong) NSString *currentTableName;
+@property (nonatomic) NSString *currentTableName;  //removed strong
 
 @property (nonatomic,strong) NSMutableDictionary *dataDic;
 @property (nonatomic,strong) NSMutableArray *dataArray;

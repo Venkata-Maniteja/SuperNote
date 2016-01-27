@@ -19,6 +19,7 @@
 #import "ContainerViewController.h"
 #import "SuperNoteManager.h"
 #import "WriteNotesController.h"
+#import "HomeViewController.h"
 @interface ViewController ()
 
 
@@ -85,20 +86,38 @@
     //TODO: check data from database and load the VC based on it
     //TODO: need to pass some parameters like background color, image based on the button selected previoiusly
     
-    _myManager.currentTableName=_tableName;
-    _myManager.queryMode=14;  //kCount
-    if ([_myManager isDatabaseEmpty]) {
+    //TODO: here it is nill
+    
+//    if (_tableName==(id)[NSNull null]||_tableName.length==0) {
+//        _tableName=@"QuickTable";
+//    }
+    
+//    _myManager.currentTableName=_tableName;
+//    _myManager.queryMode=14;  //kCount
+    if ([_myManager checkForDataInAllTables]) {
         
         
         _containerViewController.currentSegueIdentifier=@"embedEmptyNotes";
         _containerViewController.viewColor=self.navigationController.navigationBar.barTintColor;
     }else{
         
-        _containerViewController.currentSegueIdentifier=@"embedNotesList";
+        //Not the embedded notes list, display the home view
+        //TODO:
+//        [self changeRootView];
+        
+        //embed the home vc 
+        
+        _containerViewController.currentSegueIdentifier=@"embedNotesList"; //embedNotesView
+        
     }
-    //[self.containerViewController swapViewControllers];
-
+   
     
+}
+
+-(void)changeRootView{
+    
+    
+   
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -143,6 +162,20 @@
         
         WriteNotesController *wVC=segue.destinationViewController;
         wVC.notesStatus=@"NewNotes";
+        
+    }
+    
+    if ([segue.identifier isEqualToString:@"embedHomeView"]) {
+        
+        
+        HomeViewController *hVC=segue.destinationViewController;//[self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        
+        UINavigationController *mNavVC=[self.storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
+        
+        mNavVC.viewControllers=@[hVC];
+        
+       
+
         
     }
     

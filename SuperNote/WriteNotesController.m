@@ -16,7 +16,7 @@
     BOOL    textChanged;
 }
 
-@property (nonatomic,weak) SuperNoteManager *myManager;
+@property (nonatomic,strong) SuperNoteManager *myManager; //weak property causes nil when go back
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 
 @end
@@ -57,6 +57,7 @@
         [self showAlert];
     }
     
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -95,6 +96,12 @@
     
     UIAlertController *aC=[UIAlertController alertControllerWithTitle:@"Chose Label" message:@"Kindly choose the label you want his note to be categorised as" preferredStyle:UIAlertControllerStyleAlert];
     
+    NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:@"Presenting the great... Hulk Hogan!"];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont systemFontOfSize:50.0]
+                  range:NSMakeRange(24, 11)];
+    [aC setValue:hogan forKey:@"attributedTitle"];
+
     UIAlertAction *work=[UIAlertAction actionWithTitle:@"Work" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
        
         _myManager.currentTableName=@"WorkTable";

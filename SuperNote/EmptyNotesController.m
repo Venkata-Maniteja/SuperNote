@@ -21,24 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _myManager=[SuperNoteManager sharedInstance];
 }
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if ( [_myManager checkForDataInAllTables]) {
-        NSLog(@"All tables are empty");
-        
-        //load empty view, send currentSegueIdentifier as EmtpoyNote
-        
-    }else{
-
-     //a note is saved, show home view controller
-    [self changeRootView];
-    }
-    
+    _myManager=[SuperNoteManager sharedInstance];
 }
+
+
+
+
 
 -(void)changeRootView{
     
@@ -57,6 +49,25 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+
+    
+//    if ( [_myManager checkForDataInAllTables]) {
+//        NSLog(@"All tables are empty");
+//        
+//        
+//    }else{
+//        
+//        //a note is saved, show home view controller
+//        //show the list view if it is empty notes
+//        //dont change the root view when particular table is not empty
+//        if (![_myManager isDatabaseEmpty]) {
+//            [self changeRootView];
+//        }
+//        
+//    }
+    
+    
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

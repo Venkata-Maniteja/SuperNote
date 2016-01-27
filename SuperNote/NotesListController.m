@@ -52,6 +52,9 @@
     [super viewDidDisappear:animated];
 }
 
+-(void)showTempraryAlert{
+
+}
 
 -(void)getData{
     

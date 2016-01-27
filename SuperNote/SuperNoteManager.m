@@ -25,6 +25,7 @@ NSString *const TestTable = @"TestTable";
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[SuperNoteManager alloc] init];
+        
     });
     return _sharedInstance;
 }
