@@ -43,6 +43,8 @@
             NSLog(@"Database already exists");
             NSLog(@"data base path is %@",_myManager.databasePath);
         }
+    
+    [self setRootController];
 
 
     return YES;
@@ -51,31 +53,33 @@
 
 -(void)checkForData{
     
-////    [_myManager clearDatabase];
-//    if ( [_myManager checkForDataInAllTables]) {
-//        NSLog(@"All tables are empty");
-//        
-//        //load empty view, send currentSegueIdentifier as EmtpoyNote
-//        
-////    }else{
-//        NSLog(@"All tables are not empty");
-        //load the HOmeScreenView witht proper labels
+//    [_myManager clearDatabase];
+    if ( [_myManager checkForDataInAllTables]) {
+        NSLog(@"All tables are empty");
         
-        UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        //load empty view, send currentSegueIdentifier as EmtpoyNote
         
-        HomeViewController *hVC=[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    }else{
+        NSLog(@"All tables are not empty");
+       // load the HOmeScreenView witht proper labels
         
-        UINavigationController *mNavVC=[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
-        
-        mNavVC.viewControllers=@[hVC];
-        self.window.rootViewController=mNavVC;
-//    }
+      }
    
     
-    [self changeHomeViewController];
+    
 }
 
--(void)changeHomeViewController{
+-(void)setRootController{
+    
+    
+    UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    HomeViewController *hVC=[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    
+    UINavigationController *mNavVC=[storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
+    
+    mNavVC.viewControllers=@[hVC];
+    self.window.rootViewController=mNavVC;
     
 }
 
