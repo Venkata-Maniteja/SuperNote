@@ -76,12 +76,12 @@ NSString *const TestTable = @"TestTable";
         _database = [FMDatabase databaseWithPath:_databasePath];
         
         [_database open];
-        [_database executeUpdate:@"create table testNotes(notesid integer primary key autoincrement, notes text , dTime text)"];
-        [_database executeUpdate:@"create table work(notesid integer primary key autoincrement, notes text , dTime text)"];
-        [_database executeUpdate:@"create table temp(notesid integer primary key autoincrement, notes text , dTime text)"];
-        [_database executeUpdate:@"create table quickNotes(notesid integer primary key autoincrement, notes text , dTime text)"];
-        [_database executeUpdate:@"create table personal(notesid integer primary key autoincrement, notes text , dTime text)"];
-        [_database executeUpdate:@"create table password(passid integer primary key autoincrement, passName text , passWord text)"];
+        [_database executeUpdate:@"create table testNotes(notesid integer primary key autoincrement, notes text , notesPath text , dTime text)"];
+        [_database executeUpdate:@"create table work(notesid integer primary key autoincrement, notes text , notesPath text, dTime text)"];
+        [_database executeUpdate:@"create table temp(notesid integer primary key autoincrement, notes text, notesPath text , dTime text)"];
+        [_database executeUpdate:@"create table quickNotes(notesid integer primary key autoincrement, notes text, notesPath text , dTime text)"];
+        [_database executeUpdate:@"create table personal(notesid integer primary key autoincrement, notes text, notesPath text , dTime text)"];
+        [_database executeUpdate:@"create table password(passid integer primary key autoincrement, passName text, notesPath text , passWord text)"];
         _database.logsErrors=YES;
         _dataBaseCreated=YES;
         
@@ -163,17 +163,17 @@ NSString *const TestTable = @"TestTable";
         case kInsert:
             
             if ([_currentTableName isEqualToString:TestTable]) {
-                return @"insert into testNotes (notes,dTime) values (?,?)";
+                return @"insert into testNotes (notes,dTime,notesPath) values (?,?,?)";
             }else if ([_currentTableName isEqualToString:WorkTable]) {
-                return @"insert into work (notes,dTime) values (?,?)";
+                return @"insert into work (notes,dTime,notesPath) values (?,?,?)";
             }else if ([_currentTableName isEqualToString:TempTable]) {
-                return @"insert into temp (notes,dTime) values (?,?)";
+                return @"insert into temp (notes,dTime,notesPath) values (?,?,?)";
             }else if ([_currentTableName isEqualToString:QucikTable]) {
-                return @"insert into quickNotes (notes,dTime) values (?,?)";
+                return @"insert into quickNotes (notes,dTime,notesPath) values (?,?,?)";
             }else if ([_currentTableName isEqualToString:PassTable]) {
-                return @"insert into password (passWord,dTime) values (?,?)";
+                return @"insert into password (passWord,dTime,notesPath) values (?,?,?)";
             }else if ([_currentTableName isEqualToString:PersoTable]) {
-                return @"insert into personal (notes,dTime) values (?,?)";
+                return @"insert into personal (notes,dTime,notesPath) values (?,?,?)";
             }
             
             break;
@@ -181,17 +181,17 @@ NSString *const TestTable = @"TestTable";
         case kUpdate:
             
             if ([_currentTableName isEqualToString:TestTable]) {
-                return @"update testNotes set notes=?,dTime=? where notesid=?";
+                return @"update testNotes set notes=?,dTime=?,notesPath=? where notesid=?";
             }else if ([_currentTableName isEqualToString:WorkTable]) {
-                return @"update work set notes=?,dTime=? where notesid=?";
+                return @"update work set notes=?,dTime=?,notesPath=? where notesid=?";
             }else if ([_currentTableName isEqualToString:TempTable]) {
-                return @"update temp set notes=?,dTime=? where notesid=?";
+                return @"update temp set notes=?,dTime=?,notesPath=? where notesid=?";
             }else if ([_currentTableName isEqualToString:QucikTable]) {
-                return @"update quickNotes set notes=?,dTime=? where notesid=?";
+                return @"update quickNotes set notes=?,dTime=?,notesPath=? where notesid=?";
             }else if ([_currentTableName isEqualToString:PassTable]) {
-                return @"update password set notes=?,dTime=? where notesid=?";
+                return @"update password set notes=?,dTime=?,notesPath=? where notesid=?";
             }else if ([_currentTableName isEqualToString:PersoTable]) {
-                return @"update password set passWord=?,dTime=? where passid=?";
+                return @"update password set passWord=?,dTime=?,notesPath=? where passid=?";
             }
                 
             
@@ -240,18 +240,21 @@ NSString *const TestTable = @"TestTable";
     
     return @"";
 }
--(NSString *)getStringForRowWithId:(int)notesID{
+-(NSMutableDictionary *)getStringForRowWithId:(int)notesID{
     
     //check for the current table name and change the query
     
     [_database open];
     FMResultSet *results = [_database executeQuery:[self getQueryStringWithQueryMode:_queryMode],@(notesID)];
-    NSString *notes;
+    NSMutableDictionary *notes=[[NSMutableDictionary alloc]init];
     while([results next]) {
         if ([_currentTableName isEqualToString:TestTable]) {
-             notes = [results stringForColumn:@"pass"];
+//             notes = [results stringForColumn:@"pass"];
+            [notes setValue:[results stringForColumn:@"pass"] forKey:@"pass"];
         }else{
-        notes = [results stringForColumn:@"notes"];
+//        notes = [results stringForColumn:@"notes"];
+            [notes setValue:[results stringForColumn:@"notes"] forKey:@"notes"];
+            [notes setValue:[results stringForColumn:@"notesPath"] forKey:@"notesPath"];
         }
     }
     if ([_database hadError]) {
@@ -264,10 +267,11 @@ NSString *const TestTable = @"TestTable";
 }
 
 
--(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2{
+
+-(void)insertDataWithText:(NSString *)value1  withDate:(NSString *)value2 withFilePath:(NSString *)value3{
     
     [_database open];
-    [_database executeUpdate:[self getQueryStringWithQueryMode:_queryMode],value1,value2];
+    [_database executeUpdate:[self getQueryStringWithQueryMode:_queryMode],value1,value2,value3];
     [_database close];
 }
 
@@ -293,6 +297,28 @@ NSString *const TestTable = @"TestTable";
 
     
 }
+
+-(void)updateRecordWithRowID:(int )value  withText:(NSString *) string withDate:(NSString *)value2 withFilePath:(NSString *)value3{
+    
+    if ([_database open] != YES) {
+        NSLog(@"DB Error %d: %@", [_database lastErrorCode], [_database lastErrorMessage]);
+    }
+    
+    [_database beginTransaction];
+    BOOL success =[_database executeUpdate:[self getQueryStringWithQueryMode:_queryMode],string,value2,value3,[NSNumber numberWithInt:value]];
+    
+    
+    if (success) {
+        NSLog(@"OK");
+        [_database commit];
+        [_database close];
+    }else {
+        NSLog(@"FAIL");
+        [_database close];
+    }
+
+}
+
 
 -(void)clearDatabase{
     

@@ -11,14 +11,14 @@
 #import "NSString+DateFormatter.h"
 
 
-@interface WriteNotesController ()<UITextViewDelegate>{
+@interface WriteNotesController ()<UITextViewDelegate,UIImagePickerControllerDelegate>{
     
     BOOL    textChanged;
 }
 
 @property (nonatomic,strong) SuperNoteManager *myManager; //weak property causes nil when go back
 @property (nonatomic, weak) IBOutlet UITextView *textView;
-
+@property (strong,nonatomic) NSString *filePath;
 @end
 
 @implementation WriteNotesController
@@ -30,6 +30,7 @@
     _myManager=[SuperNoteManager sharedInstance];
     _textView.delegate=self;
     
+    [self addCameraButtonToNavbar];
     
     if (_myManager.dataBaseCreated) {
         NSLog(@"data base is created ? - %d",_myManager.dataBaseCreated);
@@ -45,7 +46,11 @@
     //get the notes from datatabse
     if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
         
-        _textView.text=[_myManager getStringForRowWithId:_notesID];
+        _myManager.queryMode=11;
+        NSMutableDictionary *dic=[_myManager getStringForRowWithId:_notesID];
+        _filePath=dic[@"notesPath"];
+        _textView.attributedText=[self getAttributedStringFromPath:_filePath];
+        NSLog(@"text view addres %@",_textView);
         
     }
 }
@@ -65,10 +70,103 @@
     
     if (self.isMovingFromParentViewController) {
         NSLog(@"going back");
-        [self insertTextintoDatabase];
+//        [self insertTextintoDatabase];
+        [self saveAttributedString:_textView.attributedText];
     }
     
 }
+
+
+-(void)saveAttributedString:(NSAttributedString *)atrString{
+    
+    _filePath = [[self applicationDocumentsDirectory].path
+                 stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
+    
+    BOOL success =[NSKeyedArchiver archiveRootObject:atrString toFile:_filePath];
+    
+    if (success) {
+        NSLog(@"attributed string saved");
+        [self insertTextintoDatabase];
+    }else{
+        NSLog(@"attributed string saved");
+    }
+    
+}
+
+-(NSAttributedString *)getAttributedStringFromPath:(NSString *)path{
+    
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:_filePath];
+    
+}
+
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
+}
+-(void)addCameraButtonToNavbar{
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(startCamera)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+-(void)startCamera{
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.navigationBar.barTintColor = [UIColor colorWithRed:0.147 green:0.413 blue:0.737 alpha:1];
+    picker.navigationBar.tintColor = [UIColor whiteColor];
+    picker.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+-(BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange{
+    
+    return YES;
+}
+
+#pragma camera picker delegate methods
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //Or you can get the image url from AssetsLibrary
+    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
+    
+    [self updateTextViewWithImage:image];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+-(void)updateTextViewWithImage:(UIImage *)image{
+    
+    UIImage *img=[self imageWithImage:image scaledToSize:CGSizeMake(100, 100)];
+    
+   // UITextView *textView = [[UITextView alloc] initWithFrame:_textView.frame];
+    NSMutableAttributedString *attributedString = [_textView.attributedText mutableCopy];
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = img;
+    
+    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    [attributedString replaceCharactersInRange:NSMakeRange(_textView.text.length, 0) withAttributedString:attrStringWithImage];
+    //textView.attributedText = attributedString;
+    _textView.attributedText=attributedString;
+   // [_textView addSubview:textView];
+    
+    
+}
+
 
 -(void)insertTextintoDatabase{
     
@@ -77,13 +175,13 @@
         if ([_notesStatus isEqualToString:@"NewNotes"]) {
             
             _myManager.queryMode=10;
-            [_myManager insertDataWithValues:_textView.text :[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+            [_myManager insertDataWithText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_filePath];
             
         }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
             
             if (textChanged) {
                  _myManager.queryMode=13;
-                [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]]];
+                [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_filePath];
                
             }
         }

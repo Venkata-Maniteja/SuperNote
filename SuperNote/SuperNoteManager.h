@@ -43,7 +43,11 @@ typedef enum {
 -(BOOL)checkForDataInAllTables;
 -(void)deleteRowFromDatabaseWithRowID:(int)value;
 -(NSMutableArray *)getDataFromDatabase;
--(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2;
--(NSString *)getStringForRowWithId:(int)notesID;
+//-(void)insertDataWithValues:(NSString *)value1 :(NSString *)value2;
+-(void)insertDataWithText:(NSString *)value1  withDate:(NSString *)value2 withFilePath:(NSString *)value3;
+-(NSMutableDictionary *)getStringForRowWithId:(int)notesID;
+-(NSString*)getFilePathForRowWIthID:(int)notedID;
 -(void)updateRecordWithRowID:(int)value withText:(NSString *)string withDate:(NSString *)value2;
+-(void)updateRecordWithRowID:(int )value  withText:(NSString *) string withDate:(NSString *)value2 withFilePath:(NSString *)value3;
+
 @end
