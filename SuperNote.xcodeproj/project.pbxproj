@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FC5F32D1D6CC14200BB7D7C /* AssistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5F32C1D6CC14200BB7D7C /* AssistView.m */; };
+		5FC5F32F1D6CD94400BB7D7C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC5F32E1D6CD94400BB7D7C /* AVFoundation.framework */; };
 		910B2F48527D9109A742B430 /* libPods-SuperNote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */; };
 		B81278B11C51753B00DE594D /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B81278B01C51753B00DE594D /* CustomButton.m */; };
 		B81278B41C51762E00DE594D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81278B31C51762E00DE594D /* HomeViewController.m */; };
@@ -32,6 +34,9 @@
 /* Begin PBXFileReference section */
 		1CFD6E9AB927109497296E26 /* Pods-SuperNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperNote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote.debug.xcconfig"; sourceTree = "<group>"; };
 		4DB22A344901112CC2BC3EFE /* Pods-SuperNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperNote/Pods-SuperNote.release.xcconfig"; sourceTree = "<group>"; };
+		5FC5F32B1D6CC14200BB7D7C /* AssistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistView.h; sourceTree = "<group>"; };
+		5FC5F32C1D6CC14200BB7D7C /* AssistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssistView.m; sourceTree = "<group>"; };
+		5FC5F32E1D6CD94400BB7D7C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B81278AF1C51753B00DE594D /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		B81278B01C51753B00DE594D /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		B81278B21C51762E00DE594D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FC5F32F1D6CD94400BB7D7C /* AVFoundation.framework in Frameworks */,
 				910B2F48527D9109A742B430 /* libPods-SuperNote.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,9 +88,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FC5F32A1D6CC11A00BB7D7C /* views */ = {
+			isa = PBXGroup;
+			children = (
+				5FC5F32B1D6CC14200BB7D7C /* AssistView.h */,
+				5FC5F32C1D6CC14200BB7D7C /* AssistView.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		756A8004C34A43EF91CDF22B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FC5F32E1D6CD94400BB7D7C /* AVFoundation.framework */,
 				F3AA2A18DA73BAC917493203 /* libPods-SuperNote.a */,
 			);
 			name = Frameworks;
@@ -168,6 +184,7 @@
 		B81FE2D91C57CC8E0086C337 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5FC5F32A1D6CC11A00BB7D7C /* views */,
 				B819EC151C445583009529DC /* ViewController.h */,
 				B819EC161C445583009529DC /* ViewController.m */,
 				B81FD0E61C4805D500CB03B8 /* ContainerViewController.h */,
@@ -341,6 +358,7 @@
 				B81FD0F11C48157200CB03B8 /* WriteNotesController.m in Sources */,
 				B81FD0E51C48052300CB03B8 /* NotesListController.m in Sources */,
 				B819EC111C445583009529DC /* main.m in Sources */,
+				5FC5F32D1D6CC14200BB7D7C /* AssistView.m in Sources */,
 				B81FE2DE1C57D49C0086C337 /* TestNavigationViewController.m in Sources */,
 				B81FD0E21C4804BE00CB03B8 /* EmptyNotesController.m in Sources */,
 				B81FD0EE1C4809C200CB03B8 /* EmptySegue.m in Sources */,

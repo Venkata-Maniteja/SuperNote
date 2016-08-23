@@ -9,16 +9,25 @@
 #import "WriteNotesController.h"
 #import "SuperNoteManager.h"
 #import "NSString+DateFormatter.h"
+#import "AssistView.h"
+#import <AVFoundation/AVFoundation.h>
 
-
-@interface WriteNotesController ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
+@interface WriteNotesController ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate>{
     
     BOOL    textChanged;
+    AVAudioPlayer *player;
+    AVAudioRecorder *recorder;
+    
 }
 
 @property (nonatomic,strong) SuperNoteManager *myManager; //weak property causes nil when go back
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (strong,nonatomic) NSString *filePath;
+@property (strong,nonatomic) AssistView *asstView;
+@property (strong,nonatomic) UIButton *camButton;
+@property (strong,nonatomic) UIButton *audioButton;
+
+@property (nonatomic,strong) UILongPressGestureRecognizer *lpgr;
 @end
 
 @implementation WriteNotesController
@@ -30,12 +39,18 @@
     _myManager=[SuperNoteManager sharedInstance];
     _textView.delegate=self;
     
+    [self addAssistView];
+    [self setUpAudio];
+    
     [self addCameraButtonToNavbar];
     
     if (_myManager.dataBaseCreated) {
         NSLog(@"data base is created ? - %d",_myManager.dataBaseCreated);
        
     }
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardDidShowNotification object:nil];
     
 }
 
@@ -78,6 +93,143 @@
     
 }
 
+-(void)setUpAudio{
+    
+    NSString *filename = [NSString stringWithFormat:@"%@.mp3",[NSDate date]];
+    
+    NSArray *pathComponents = [NSArray arrayWithObjects:
+                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
+                               filename,
+                               nil];
+    NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+    
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEGLayer3] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+    
+    
+    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
+    recorder.delegate = self;
+    recorder.meteringEnabled = YES;
+    [recorder prepareToRecord];
+
+}
+
+-(void)keyboardOnScreen:(NSNotification *)notification
+{
+    NSDictionary *info  = notification.userInfo;
+    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect rawFrame      = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+    
+//    _lastContentOffsetY = keyboardFrame.size.height;
+    CGRect asstFrame = CGRectMake(keyboardFrame.size.width-_asstView.frame.size.width-10, keyboardFrame.origin.y-_asstView.frame.size.height-10, _asstView.frame.size.width, _asstView.frame.size.height);
+    _asstView.frame = asstFrame;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    [UIView commitAnimations];
+    
+    NSLog(@"keyboardFrame: %@", NSStringFromCGRect(keyboardFrame));
+}
+
+-(void)addAssistView{
+    
+    _asstView =[[AssistView alloc]initWithFrame:CGRectMake(0,200, 30, 30)];
+    _asstView.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:_asstView];
+    
+    self.lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
+    self.lpgr.minimumPressDuration = 0.5f;
+    self.lpgr.allowableMovement = 100.0f;
+    
+    [_asstView addGestureRecognizer:self.lpgr];
+    
+}
+
+- (void)handleLongPressGestures:(UILongPressGestureRecognizer *)sender
+{
+    if ([sender isEqual:self.lpgr]) {
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            NSLog(@"long pressed");
+            [self showButtons];
+        }
+    }
+}
+
+- (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
+    CGPoint pt = [[touches anyObject] locationInView:self.view];
+    _asstView.center = pt;
+}
+
+-(void)showButtons{
+    
+    
+    CGRect newRect = CGRectMake(_asstView.frame.origin.x, _asstView.frame.origin.y
+                                , _camButton.frame.size.width, _camButton.frame.size.height);
+    _audioButton.frame = newRect;
+    _camButton.frame=newRect;
+    
+   _camButton = [[UIButton alloc]init];
+    CGRect butFrame = CGRectMake(_asstView.frame.origin.x, _asstView.frame.origin.y-50, _asstView.frame.size.width, _asstView.frame.size.height);
+//    UIView *cam =[[UIView alloc]initWithFrame:butFrame];
+//    _camButton.frame=_asstView.frame;
+    _camButton.backgroundColor=[UIColor clearColor];
+    [_camButton addTarget:self action:@selector(butPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_camButton setBackgroundImage:[UIImage imageNamed:@"Camera Filled-50"] forState:UIControlStateNormal];
+    [self.view addSubview:_camButton];
+    
+    _audioButton = [[UIButton alloc]init];
+    CGRect audFrame = CGRectMake(_asstView.frame.origin.x-50, _asstView.frame.origin.y, _asstView.frame.size.width, _asstView.frame.size.height);
+    //    UIView *cam =[[UIView alloc]initWithFrame:butFrame];
+//    _audioButton.frame=_asstView.frame;
+    _audioButton.backgroundColor=[UIColor clearColor];
+     [_audioButton addTarget:self action:@selector(butPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_audioButton setBackgroundImage:[UIImage imageNamed:@"Microphone-52"] forState:UIControlStateNormal];
+    [self.view addSubview:_audioButton];
+
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         _audioButton.frame = audFrame;
+                         _camButton.frame=butFrame;
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+
+    
+    
+}
+
+-(void)removeButtons{
+    
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         CGRect newRect = CGRectMake(_asstView.frame.origin.x, _asstView.frame.origin.y
+                                                     , _camButton.frame.size.width, _camButton.frame.size.height);
+                         _audioButton.frame = newRect;
+                         _camButton.frame=newRect;
+                     }
+                     completion:^(BOOL finished){
+                         [_audioButton removeFromSuperview];
+                         [_camButton removeFromSuperview];
+                     }];
+    
+   
+}
+
+-(void)butPressed{
+    
+    [self removeButtons];
+}
 
 -(void)saveAttributedString:(NSAttributedString *)atrString{
     
@@ -261,8 +413,12 @@
 }
 
 #pragma Text view delegate methods
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+//   textView.inputAccessoryView=_asstView;
+    return YES;
+}
 -(void)textViewDidBeginEditing:(UITextView *)textView{
-    
+   
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
