@@ -11,7 +11,7 @@
 #import "NSString+DateFormatter.h"
 
 
-@interface WriteNotesController ()<UITextViewDelegate,UIImagePickerControllerDelegate>{
+@interface WriteNotesController ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
     
     BOOL    textChanged;
 }
@@ -48,9 +48,11 @@
         
         _myManager.queryMode=11;
         NSMutableDictionary *dic=[_myManager getStringForRowWithId:_notesID];
-        _filePath=dic[@"notesPath"];
+         _filePath=dic[@"notesPath"];
+//        _filePath=[self getAbsolutePathFromRelativePath:dic[@"notesPath"]];
         _textView.attributedText=[self getAttributedStringFromPath:_filePath];
-        NSLog(@"text view addres %@",_textView);
+//        _textView.text=dic[@"notes"];
+        NSLog(@"filepath in viewWillAppear is %@",_filePath);
         
     }
 }
@@ -81,6 +83,7 @@
     
     _filePath = [[self applicationDocumentsDirectory].path
                  stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
+//    _filePath =[self getRelativePath];
     
     BOOL success =[NSKeyedArchiver archiveRootObject:atrString toFile:_filePath];
     
@@ -93,11 +96,31 @@
     
 }
 
+-(NSString *)getRelativePath{
+    
+    NSString *documentsDirectory = _myManager.currentTableName;
+    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
+   return documentsDirectory;
+}
+
+-(NSString *)getAbsolutePathFromRelativePath:(NSString *)relativePath{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *fullCachePath = ((NSURL*)[[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] ).path;
+    return [fullCachePath stringByAppendingPathComponent:relativePath];
+}
+
 -(NSAttributedString *)getAttributedStringFromPath:(NSString *)path{
     
     
     return [NSKeyedUnarchiver unarchiveObjectWithFile:_filePath];
     
+}
+
+-(NSString *)getDocPath{
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+   return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+
 }
 
 - (NSURL *)applicationDocumentsDirectory {
@@ -163,6 +186,8 @@
     //textView.attributedText = attributedString;
     _textView.attributedText=attributedString;
    // [_textView addSubview:textView];
+    
+    [self saveAttributedString:_textView.attributedText];
     
     
 }

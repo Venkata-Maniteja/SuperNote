@@ -156,7 +156,7 @@ NSString *const TestTable = @"TestTable";
             }else if ([_currentTableName isEqualToString:PassTable]) {
                 return @"select * from password where passid= ?";
             }else if ([_currentTableName isEqualToString:PersoTable]) {
-                return @"select * from personal where passid= ?";
+                return @"select * from personal where notesid= ?";
             }
 
             break;
@@ -189,9 +189,9 @@ NSString *const TestTable = @"TestTable";
             }else if ([_currentTableName isEqualToString:QucikTable]) {
                 return @"update quickNotes set notes=?,dTime=?,notesPath=? where notesid=?";
             }else if ([_currentTableName isEqualToString:PassTable]) {
-                return @"update password set notes=?,dTime=?,notesPath=? where notesid=?";
+                return @"update password set notes=?,dTime=?,notesPath=? where passid=?";
             }else if ([_currentTableName isEqualToString:PersoTable]) {
-                return @"update password set passWord=?,dTime=?,notesPath=? where passid=?";
+                return @"update password set passWord=?,dTime=?,notesPath=? where notesid=?";
             }
                 
             
