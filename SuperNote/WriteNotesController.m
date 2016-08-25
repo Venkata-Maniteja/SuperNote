@@ -23,6 +23,7 @@
 @property (nonatomic,strong) SuperNoteManager *myManager; //weak property causes nil when go back
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (strong,nonatomic) NSString *filePath;
+@property (strong,nonatomic) NSString *fileExtension;
 @property (strong,nonatomic) AssistView *asstView;
 @property (strong,nonatomic) UIButton *camButton;
 @property (strong,nonatomic) UIButton *audioButton;
@@ -63,11 +64,12 @@
         
         _myManager.queryMode=11;
         NSMutableDictionary *dic=[_myManager getStringForRowWithId:_notesID];
-         _filePath=dic[@"notesPath"];
+//         _filePath=dic[@"notesPath"];
+        _fileExtension = dic[@"notesPath"];
 //        _filePath=[self getAbsolutePathFromRelativePath:dic[@"notesPath"]];
-        _textView.attributedText=[self getAttributedStringFromPath:_filePath];
+        _textView.attributedText=[self getAttributedStringFromPath:_fileExtension];
 //        _textView.text=dic[@"notes"];
-        NSLog(@"filepath in viewWillAppear is %@",_filePath);
+        NSLog(@"filepath-ext in viewWillAppear is %@",_fileExtension);
         
     }
 }
@@ -180,8 +182,6 @@
     
    _camButton = [[UIButton alloc]init];
     CGRect butFrame = CGRectMake(_asstView.frame.origin.x, _asstView.frame.origin.y-50, _asstView.frame.size.width, _asstView.frame.size.height);
-//    UIView *cam =[[UIView alloc]initWithFrame:butFrame];
-//    _camButton.frame=_asstView.frame;
     _camButton.backgroundColor=[UIColor clearColor];
     [_camButton addTarget:self action:@selector(butPressed) forControlEvents:UIControlEventTouchUpInside];
     [_camButton setBackgroundImage:[UIImage imageNamed:@"Camera Filled-50"] forState:UIControlStateNormal];
@@ -189,8 +189,6 @@
     
     _audioButton = [[UIButton alloc]init];
     CGRect audFrame = CGRectMake(_asstView.frame.origin.x-50, _asstView.frame.origin.y, _asstView.frame.size.width, _asstView.frame.size.height);
-    //    UIView *cam =[[UIView alloc]initWithFrame:butFrame];
-//    _audioButton.frame=_asstView.frame;
     _audioButton.backgroundColor=[UIColor clearColor];
      [_audioButton addTarget:self action:@selector(butPressed) forControlEvents:UIControlEventTouchUpInside];
     [_audioButton setBackgroundImage:[UIImage imageNamed:@"Microphone-52"] forState:UIControlStateNormal];
@@ -233,11 +231,19 @@
 
 -(void)saveAttributedString:(NSAttributedString *)atrString{
     
-    _filePath = [[self applicationDocumentsDirectory].path
-                 stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
+//    _filePath = [[self applicationDocumentsDirectory].path
+//                 stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
+    _fileExtension = [NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID];
+    
+    NSLog(@"saved path is %@",_filePath);
 //    _filePath =[self getRelativePath];
     
-    BOOL success =[NSKeyedArchiver archiveRootObject:atrString toFile:_filePath];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent: _fileExtension];
+
+    
+    BOOL success =[NSKeyedArchiver archiveRootObject:atrString toFile:filePath];
     
     if (success) {
         NSLog(@"attributed string saved");
@@ -248,30 +254,35 @@
     
 }
 
--(NSString *)getRelativePath{
-    
-    NSString *documentsDirectory = _myManager.currentTableName;
-    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
-   return documentsDirectory;
-}
+//-(NSString *)getRelativePath{
+//    
+//    NSString *documentsDirectory = _myManager.currentTableName;
+//    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
+//   return documentsDirectory;
+//}
 
--(NSString *)getAbsolutePathFromRelativePath:(NSString *)relativePath{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *fullCachePath = ((NSURL*)[[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] ).path;
-    return [fullCachePath stringByAppendingPathComponent:relativePath];
-}
+//-(NSString *)getAbsolutePathFromRelativePath:(NSString *)relativePath{
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    NSString *fullCachePath = ((NSURL*)[[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] ).path;
+//    return [fullCachePath stringByAppendingPathComponent:relativePath];
+//}
 
 -(NSAttributedString *)getAttributedStringFromPath:(NSString *)path{
     
     
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:_filePath];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocPathWithExtension:path]];
     
 }
 
--(NSString *)getDocPath{
+-(NSString *)getDocPathWithExtension:(NSString *)ext{
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-   return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+   return [documentsDirectory stringByAppendingPathComponent:ext];
+    
+//   return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 
 }
 
@@ -352,13 +363,13 @@
         if ([_notesStatus isEqualToString:@"NewNotes"]) {
             
             _myManager.queryMode=10;
-            [_myManager insertDataWithText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_filePath];
+            [_myManager insertDataWithText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_fileExtension];
             
         }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
             
             if (textChanged) {
                  _myManager.queryMode=13;
-                [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_filePath];
+                [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_fileExtension];
                
             }
         }
