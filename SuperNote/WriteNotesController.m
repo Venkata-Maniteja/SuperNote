@@ -226,7 +226,7 @@
     
     if (success) {
         NSLog(@"attributed string saved");
-        [self insertTextintoDatabase];
+        [self insertTextintoDatabaseWithFilePath:_fileExtension withUpdatePath:nil];
     }else{
         NSLog(@"attributed string saved");
     }
@@ -244,7 +244,7 @@
     
     _textView.attributedText = stringFromFIle;
     
-    [self insertTextintoDatabase];
+    [self insertTextintoDatabaseWithFilePath:nil withUpdatePath:filePAth];
 }
 
 
@@ -339,20 +339,20 @@
 }
 
 
--(void)insertTextintoDatabase{
+-(void)insertTextintoDatabaseWithFilePath:(NSString *)filePAth withUpdatePath:(NSString *)updatePAth{
     
     if (![_textView.text isEqualToString:@""]) {
         
         if ([_notesStatus isEqualToString:@"NewNotes"]) {
             
             _myManager.queryMode=10;
-            [_myManager insertDataWithText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_fileExtension];
+            [_myManager insertDataWithText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:filePAth];
             
         }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
             
             if (textChanged || containsText) {
                  _myManager.queryMode=13;
-                [_myManager updateRecordWithRowID:_notesID withText:_textView.attributedText withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_fileExtension];
+                [_myManager updateRecordWithRowID:_notesID withText:_textView.attributedText withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:updatePAth];
                
             }
         }
