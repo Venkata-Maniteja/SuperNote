@@ -15,8 +15,9 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic,weak) SuperNoteManager *myManager;
-@property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) NSMutableDictionary *dataDic;
+@property (nonatomic,strong) NSMutableArray *dataArray;
+
 
 @end
 
@@ -60,7 +61,6 @@
     
     _myManager.queryMode=15; //kGetAll
    _dataArray=[_myManager getDataFromDatabase];
-    
     
 }
 

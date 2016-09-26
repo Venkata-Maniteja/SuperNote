@@ -28,6 +28,8 @@
 	<string>Main</string>
 	<key>NSCameraUsageDescription</key>
 	<string>SuperNote will access your camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>SuperNote will access your photos.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

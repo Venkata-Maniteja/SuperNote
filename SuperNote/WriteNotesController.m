@@ -15,6 +15,7 @@
 @interface WriteNotesController ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate>{
     
     BOOL    textChanged;
+    BOOL    containsText;
     AVAudioPlayer *player;
     AVAudioRecorder *recorder;
     
@@ -42,12 +43,8 @@
     
     [self addAssistView];
     [self setUpAudio];
-    
-    [self addCameraButtonToNavbar];
-    
     if (_myManager.dataBaseCreated) {
         NSLog(@"data base is created ? - %d",_myManager.dataBaseCreated);
-       
     }
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -64,11 +61,13 @@
         
         _myManager.queryMode=11;
         NSMutableDictionary *dic=[_myManager getStringForRowWithId:_notesID];
-//         _filePath=dic[@"notesPath"];
-        _fileExtension = dic[@"notesPath"];
-//        _filePath=[self getAbsolutePathFromRelativePath:dic[@"notesPath"]];
+        _fileExtension = dic[@"fileName"];
         _textView.attributedText=[self getAttributedStringFromPath:_fileExtension];
-//        _textView.text=dic[@"notes"];
+        if (_textView.attributedText) {
+            containsText =YES;
+        }else{
+            containsText = NO;
+        }
         NSLog(@"filepath-ext in viewWillAppear is %@",_fileExtension);
         
     }
@@ -80,16 +79,13 @@
     if ((_myManager.currentTableName==(id)[NSNull null])||_myManager.currentTableName.length==0) {
         [self showAlert];
     }
-    
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    if (self.isMovingFromParentViewController) {
+    if (self.isMovingFromParentViewController && textChanged) {
         NSLog(@"going back");
-//        [self insertTextintoDatabase];
         [self saveAttributedString:_textView.attributedText];
     }
     
@@ -131,7 +127,6 @@
     CGRect rawFrame      = [value CGRectValue];
     CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
     
-//    _lastContentOffsetY = keyboardFrame.size.height;
     CGRect asstFrame = CGRectMake(keyboardFrame.size.width-_asstView.frame.size.width-10, keyboardFrame.origin.y-_asstView.frame.size.height-10, _asstView.frame.size.width, _asstView.frame.size.height);
     _asstView.frame = asstFrame;
     
@@ -183,7 +178,7 @@
    _camButton = [[UIButton alloc]init];
     CGRect butFrame = CGRectMake(_asstView.frame.origin.x, _asstView.frame.origin.y-50, _asstView.frame.size.width, _asstView.frame.size.height);
     _camButton.backgroundColor=[UIColor clearColor];
-    [_camButton addTarget:self action:@selector(butPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_camButton addTarget:self action:@selector(startCamera) forControlEvents:UIControlEventTouchUpInside];
     [_camButton setBackgroundImage:[UIImage imageNamed:@"Camera Filled-50"] forState:UIControlStateNormal];
     [self.view addSubview:_camButton];
     
@@ -202,9 +197,6 @@
                      completion:^(BOOL finished){
                          
                      }];
-
-    
-    
 }
 
 -(void)removeButtons{
@@ -220,30 +212,17 @@
                          [_audioButton removeFromSuperview];
                          [_camButton removeFromSuperview];
                      }];
-    
-   
 }
 
 -(void)butPressed{
-    
     [self removeButtons];
 }
 
 -(void)saveAttributedString:(NSAttributedString *)atrString{
     
-//    _filePath = [[self applicationDocumentsDirectory].path
-//                 stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
-    _fileExtension = [NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID];
+    _fileExtension = [NSString stringWithFormat:@"%@-%@.txt",_myManager.currentTableName,[self getUUID]];
     
-    NSLog(@"saved path is %@",_filePath);
-//    _filePath =[self getRelativePath];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent: _fileExtension];
-
-    
-    BOOL success =[NSKeyedArchiver archiveRootObject:atrString toFile:filePath];
+    BOOL success =[NSKeyedArchiver archiveRootObject:atrString toFile:[self getDocPathWithExtension:_fileExtension]];
     
     if (success) {
         NSLog(@"attributed string saved");
@@ -254,21 +233,22 @@
     
 }
 
-//-(NSString *)getRelativePath{
-//    
-//    NSString *documentsDirectory = _myManager.currentTableName;
-//    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%d.txt",_myManager.currentTableName,_notesID]];
-//   return documentsDirectory;
-//}
+-(void)updateNotes:(NSAttributedString *)attrString{
+    //get the details based on notesID
+    NSString *filePAth=  [_myManager getFilePathForRowWIthID:_notesID];
+    
+    //unarchive the file
+    NSMutableAttributedString *stringFromFIle = [[self getAttributedStringFromPath:filePAth] mutableCopy];
+    
+    [stringFromFIle appendAttributedString:attrString];
+    
+    _textView.attributedText = stringFromFIle;
+    
+    [self insertTextintoDatabase];
+}
 
-//-(NSString *)getAbsolutePathFromRelativePath:(NSString *)relativePath{
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    NSString *fullCachePath = ((NSURL*)[[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] ).path;
-//    return [fullCachePath stringByAppendingPathComponent:relativePath];
-//}
 
 -(NSAttributedString *)getAttributedStringFromPath:(NSString *)path{
-    
     
     return [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocPathWithExtension:path]];
     
@@ -277,25 +257,27 @@
 -(NSString *)getDocPathWithExtension:(NSString *)ext{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    
    return [documentsDirectory stringByAppendingPathComponent:ext];
-    
-//   return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-
 }
 
-- (NSURL *)applicationDocumentsDirectory {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
-                                                   inDomains:NSUserDomainMask] lastObject];
+- (NSString *)getUUID
+{
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return (__bridge NSString *)string;
 }
+
+
 -(void)addCameraButtonToNavbar{
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(startCamera)];
     self.navigationItem.rightBarButtonItem = anotherButton;
 }
 
 -(void)startCamera{
+    //to hide the assist view
+    [self removeButtons];
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -350,7 +332,8 @@
     _textView.attributedText=attributedString;
    // [_textView addSubview:textView];
     
-    [self saveAttributedString:_textView.attributedText];
+//         [self saveAttributedString:_textView.attributedText];
+    [self updateNotes:_textView.attributedText];
     
     
 }
@@ -367,9 +350,9 @@
             
         }else if ([_notesStatus isEqualToString:@"UpdateNotes"]) {
             
-            if (textChanged) {
+            if (textChanged || containsText) {
                  _myManager.queryMode=13;
-                [_myManager updateRecordWithRowID:_notesID withText:_textView.text withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_fileExtension];
+                [_myManager updateRecordWithRowID:_notesID withText:_textView.attributedText withDate:[NSString stringWithFormat:@"%@",[NSString formatDateString:[NSDate date]]] withFilePath:_fileExtension];
                
             }
         }

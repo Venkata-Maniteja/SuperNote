@@ -162,7 +162,8 @@
         
         WriteNotesController *wVC=segue.destinationViewController;
         wVC.notesStatus=@"NewNotes";
-        
+        NSInteger notesNum = _myManager.dataArray.count;
+        wVC.notesID=(int)notesNum +1;
     }
     
     if ([segue.identifier isEqualToString:@"embedHomeView"]) {

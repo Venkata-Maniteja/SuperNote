@@ -48,6 +48,6 @@ typedef enum {
 -(NSMutableDictionary *)getStringForRowWithId:(int)notesID;
 -(NSString*)getFilePathForRowWIthID:(int)notedID;
 -(void)updateRecordWithRowID:(int)value withText:(NSString *)string withDate:(NSString *)value2;
--(void)updateRecordWithRowID:(int )value  withText:(NSString *) string withDate:(NSString *)value2 withFilePath:(NSString *)value3;
+-(void)updateRecordWithRowID:(int )value  withText:(NSAttributedString *) string withDate:(NSString *)value2 withFilePath:(NSString *)value3;
 
 @end
